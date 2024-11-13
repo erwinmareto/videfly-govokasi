@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Sidebar from "../components/Sidebar";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
-  const [currentProyekIndex, setCurrentProyekIndex] = useState(0);
 
   const kontenItems = [
     {
@@ -26,38 +26,12 @@ export default function Home() {
     }
   ];
 
-  const proyekItems = [
-    {
-      title: "Video Produk A",
-      image: "/images/product-a.jpg",
-      created: "1 week ago"
-    },
-    {
-      title: "Video Produk B",
-      image: "/images/product-b.jpg", 
-      created: "2 weeks ago"
-    },
-    {
-      title: "Video Produk C",
-      image: "/images/product-c.jpg",
-      created: "3 weeks ago" 
-    }
-  ];
-
   const nextKonten = () => {
     setCurrentKontenIndex((prev) => (prev + 1) % kontenItems.length);
   };
 
   const prevKonten = () => {
     setCurrentKontenIndex((prev) => (prev - 1 + kontenItems.length) % kontenItems.length);
-  };
-
-  const nextProyek = () => {
-    setCurrentProyekIndex((prev) => (prev + 1) % proyekItems.length);
-  };
-
-  const prevProyek = () => {
-    setCurrentProyekIndex((prev) => (prev - 1 + proyekItems.length) % proyekItems.length);
   };
 
   return (
@@ -135,39 +109,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold flex items-center gap-2">
-                <FaProjectDiagram className="text-xl text-purple-600" />
-                Proyek
-              </h2>
-              <Link to="/proyek" className="text-purple-600 text-sm hover:underline">Lihat semua</Link>
-            </div>
-
-            <div className="relative">
-              <button onClick={prevProyek} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md">
-                <FaChevronLeft className="text-gray-600" />
-              </button>
-              <div className="overflow-hidden">
-                <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentProyekIndex * 100}%)` }}>
-                  {proyekItems.map((item, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-4">
-                      <div className="bg-white p-4 rounded-lg shadow-sm">
-                        <h3 className="font-medium mb-2">{item.title}</h3>
-                        <div className="bg-gray-100 h-32 rounded-lg overflow-hidden">
-                          <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="mt-2 text-sm text-gray-500">Created {item.created}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <button onClick={nextProyek} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md">
-                <FaChevronRight className="text-gray-600" />
-              </button>
-            </div>
-          </div>
+          {/* Project Section */}
+          <ProjectCard />
         </div>
       </div>
     </div>
