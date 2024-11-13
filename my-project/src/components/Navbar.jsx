@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiHome } from 'react-icons/hi';
-import { RiFileList2Line } from 'react-icons/ri';
-import { BiMoviePlay } from 'react-icons/bi';
-import { TbSmartHome } from "react-icons/tb";
-import { PiMagicWandThin } from "react-icons/pi";
-import { IoPerson } from 'react-icons/io5';
-import { AiOutlineSetting } from 'react-icons/ai';
+import HomeIcon from '../assets/icons/home-03.svg'
+import Streamline from '../assets/icons/streamline_ai-edit-spark.svg'
+import HeroIcon from '../assets/icons/heroicons-outline_color-swatch.svg'
+import AvatarIcon from '../assets/icons/user-star-02.svg'
+import CalendarIcon from '../assets/icons/calendar-03.svg'
+import FileIcon from '../assets/icons/solar_library-linear.svg'
 
 export default function Navbar() {
   return (
@@ -30,42 +29,42 @@ export default function Navbar() {
               to="/" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <TbSmartHome className="mr-1.5 h-4 w-4" />
+              <img src={HomeIcon} alt="Home" className="mr-1.5 h-4 w-4" />
               <span>Beranda</span>
             </Link>
             <Link 
               to="/kelola-konten" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <RiFileList2Line className="mr-1.5 h-4 w-4" />
+              <img src={CalendarIcon} alt="Kelola Konten" className="mr-1.5 h-4 w-4" />
               <span>Kelola Konten</span>
             </Link>
             <Link 
               to="/proyek" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <BiMoviePlay className="mr-1.5 h-4 w-4" />
+              <img src={FileIcon} alt="Proyek" className="mr-1.5 h-4 w-4" />
               <span>Proyek</span>
             </Link>
             <Link 
               to="/ai-tools" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <PiMagicWandThin className="mr-1.5 h-4 w-4" />
+              <img src={Streamline} alt="AI Tools" className="mr-1.5 h-4 w-4" />
               <span>AI Tools</span>
             </Link>
             <Link 
               to="/avatar" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <IoPerson className="mr-1.5 h-4 w-4" />
+              <img src={AvatarIcon} alt="Avatar" className="mr-1.5 h-4 w-4" />
               <span>Avatar</span>
             </Link>
             <Link 
               to="/brand-kit" 
               className="flex items-center text-base font-medium text-gray-700 hover:text-purple-600"
             >
-              <AiOutlineSetting className="mr-1.5 h-4 w-4" />
+              <img src={HeroIcon} alt="Brand Kit" className="mr-1.5 h-4 w-4" />
               <span>Brand Kit</span>
             </Link>
           </div>
