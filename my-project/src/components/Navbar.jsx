@@ -9,7 +9,7 @@ import FileIcon from '../assets/icons/solar_library-linear.svg'
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white shadow-lg rounded-b-lg mb-1">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
