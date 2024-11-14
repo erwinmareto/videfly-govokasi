@@ -162,7 +162,7 @@ export default function Home() {
           {/* Carousel */}
           <div className="relative">
             <div className="flex gap-4 overflow-x-auto pb-4">
-              {proyekItems.map((item, index) => (
+              {kontenItems.map((item, index) => (
                 <div key={index} className="flex-none w-64">
                   <div className="relative rounded-lg overflow-hidden">
                     <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
