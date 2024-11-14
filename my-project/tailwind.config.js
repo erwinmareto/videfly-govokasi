@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+<<<<<<< HEAD
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
@@ -81,6 +82,14 @@ export default {
         wide: "1440px",
       },
     },
+=======
+      colors: {
+        'navy': {
+          800: '#1F2937'
+        }
+      }
+    }
+>>>>>>> 2ad2797f11eca76e70527cba62c92e2be4780146
   },
   plugins: [],
 };
