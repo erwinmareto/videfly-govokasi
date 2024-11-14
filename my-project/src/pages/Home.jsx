@@ -8,73 +8,100 @@ import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
 import ProjectCard from "../components/ProjectCard";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { FreeMode } from 'swiper/modules';
 
 export default function Home() {
-  const sections = {
-    lanjutkan: [
-      {
-        title: "Alchemist Fragrance",
-        type: "Video",
-        progress: 75,
-        icon: "random"
-      },
-      {
-        title: "Beauty of Angel - Lip Scrub",
-        type: "Video",
-        progress: 45,
-        icon: "random"
-      }
-    ],
-    agendaHariIni: [
-      {
-        title: "Alchemist Fragrance",
-        type: "Video",
-        progress: 90,
-        icon: "clock"
-      },
-      {
-        title: "Beauty of Angel - Lip Scrub",
-        type: "Design",
-        progress: 60,
-        icon: "clock"
-      }
-    ],
-    agendaBesok: [
-      {
-        title: "Beauty of Angel - Lip Scrub",
-        type: "Design",
-        progress: 30,
-        icon: "clock"
-      },
-      {
-        title: "Beauty of Angel - Lip Scrub",
-        type: "Design",
-        progress: 25,
-        icon: "clock"
-      }
-    ],
-    recoveryDelete: [
-      {
-        title: "Beauty of Angel - Lip Scrub",
-        type: "Design",
-        progress: 20,
-        icon: "clock"
-      }
-    ]
+  const [currentSection, setCurrentSection] = useState(0);
+  
+  const sectionList = [
+    {
+      title: "Lanjutkan",
+      items: [
+        {
+          title: "Alchemist Fragrance",
+          type: "Video",
+          progress: 75,
+          icon: "random"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Video",
+          progress: 45,
+          icon: "random"
+        }
+      ]
+    },
+    {
+      title: "Agenda Hari Ini",
+      items: [
+        {
+          title: "Alchemist Fragrance",
+          type: "Video",
+          progress: 90,
+          icon: "clock"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 60,
+          icon: "clock"
+        }
+      ]
+    },
+    {
+      title: "Agenda Besok",
+      items: [
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 30,
+          icon: "clock"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 25,
+          icon: "clock"
+        }
+      ]
+    },
+    {
+      title: "Recovery Delete",
+      items: [
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 20,
+          icon: "clock"
+        }
+      ]
+    }
+  ];
+
+  const nextSection = () => {
+    if (currentSection < sectionList.length - 1) {
+      setCurrentSection(currentSection + 1);
+    }
   };
 
-  const [activeTab, setActiveTab] = useState('lanjutkan');
+  const prevSection = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
 
   const getTypeStyle = (type) => {
     return type === "Video" 
-      ? "bg-pink-50 text-pink-500"
+      ? "bg-[#FFF1F1] text-[#FF5C5C]"
       : "bg-blue-50 text-blue-500";
   };
 
   const getIcon = (iconType) => {
     return iconType === "random" 
-      ? <FaRandom className="w-4 h-4 text-white" />
-      : <FaClock className="w-4 h-4 text-white" />;
+      ? <FaRandom className="w-3.5 h-3.5 text-white" />
+      : <FaClock className="w-3.5 h-3.5 text-white" />;
   };
 
   return (
@@ -105,7 +132,7 @@ export default function Home() {
               </h1>
               
               {/* Buat Video Button */}
-              <div className="flex justify-start w-full gap-2 mt-4 sm:mt-7 px-4">
+              <div className="flex justify-start w-full gap-2 mt-4 sm:mt-7 px-2">
                 <button className="bg-violet-600 hover:bg-violet-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl flex items-center gap-2">
                   <span className="font-medium text-sm sm:text-base">Buat Video</span>
                   <img src={HalfAdd} alt="Add" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
@@ -140,9 +167,9 @@ export default function Home() {
 
       {/* Content Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Kelola Konten */}
+        {/* Kelola Konten Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Kelola Konten</h2>
           </div>
           <button className="px-4 sm:px-6 py-1.5 sm:py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
@@ -150,59 +177,66 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex gap-4 sm:gap-8 mb-6 border-b overflow-x-auto">
-          <button 
-            onClick={() => setActiveTab('lanjutkan')}
-            className={`pb-2 px-1 text-sm sm:text-base whitespace-nowrap ${activeTab === 'lanjutkan' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
-          >
-            Lanjutkan
-          </button>
-          <button 
-            onClick={() => setActiveTab('agendaHariIni')}
-            className={`pb-2 px-1 text-sm sm:text-base whitespace-nowrap ${activeTab === 'agendaHariIni' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
-          >
-            Agenda Hari ini
-          </button>
-          <button 
-            onClick={() => setActiveTab('agendaBesok')}
-            className={`pb-2 px-1 text-sm sm:text-base whitespace-nowrap ${activeTab === 'agendaBesok' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
-          >
-            Agenda Besok
-          </button>
-          <button 
-            onClick={() => setActiveTab('recoveryDelete')}
-            className={`pb-2 px-1 text-sm sm:text-base whitespace-nowrap ${activeTab === 'recoveryDelete' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
-          >
-            Recovery Delete
-          </button>
-        </div>
-
-        {/* Content Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sections[activeTab].map((item, index) => (
-            <div key={index} className="border rounded-lg p-3 sm:p-4 relative">
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h3 className="font-medium text-sm sm:text-base mb-2">{item.title}</h3>
-                  <span className={`inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs ${getTypeStyle(item.type)}`}>
-                    {item.type}
-                  </span>
-                </div>
-                <button className="p-1.5 sm:p-2 rounded-full bg-[#0A0B26]">
-                  {getIcon(item.icon)}
-                </button>
-              </div>
-              
-              {/* Progress bar */}
-              <div className="absolute bottom-0 left-0 right-0 h-1">
-                <div 
-                  className="h-full bg-gradient-to-r from-violet-500 to-purple-500"
-                  style={{ width: `${item.progress}%` }}
-                />
-              </div>
+        {/* Carousel Container */}
+        <div className="relative">
+          <div className="overflow-x-auto no-scrollbar">
+            <div className="flex gap-6 pb-4 no-scrollbar">
+              <Swiper
+                modules={[FreeMode]}
+                slidesPerView="auto"
+                spaceBetween={24}
+                freeMode={{
+                  enabled: true,
+                  momentum: true,
+                  momentumRatio: 0.8,
+                  momentumVelocityRatio: 0.9
+                }}
+                mousewheel={true}
+                grabCursor={true}
+                touchEventsTarget="container"
+                touchRatio={1}
+                touchAngle={45}
+                simulateTouch={true}
+                threshold={5}
+                className="mySwiper"
+              >
+                {sectionList.map((section, index) => (
+                  <SwiperSlide key={index} style={{ width: 'auto', cursor: 'grab' }}>
+                    <div className="min-w-[300px] sm:min-w-[400px]">
+                      <h3 className="text-base font-medium mb-4">{section.title}</h3>
+                      <div className="space-y-3">
+                        {section.items.map((item, itemIndex) => (
+                          <div key={itemIndex} className="relative bg-white rounded-2xl border border-gray-200">
+                            <div className="p-4">
+                              <div className="flex justify-between items-start">
+                                <div className="space-y-2">
+                                  <h3 className="font-medium text-sm text-gray-900">{item.title}</h3>
+                                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs ${getTypeStyle(item.type)}`}>
+                                    {item.type}
+                                  </span>
+                                </div>
+                                <button className="p-2 rounded-full bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
+                                  {getIcon(item.icon)}
+                                </button>
+                              </div>
+                            </div>
+                            
+                            {/* Progress bar */}
+                            <div className="h-1 w-full bg-transparent">
+                              <div 
+                                className="h-full bg-violet-500"
+                                style={{ width: `${item.progress}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Project Section */}
