@@ -1,96 +1,161 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH } from "react-icons/fa";
+import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH, FaClock, FaRandom } from "react-icons/fa";
 import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
 import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
 import ProjectCard from "../components/ProjectCard";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { FreeMode } from 'swiper/modules';
 
 export default function Home() {
-  const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
-
-  const kontenItems = [
+  const [currentSection, setCurrentSection] = useState(0);
+  
+  const sectionList = [
     {
-      title: "Automated Programme",
-      image: "/images/automated-program.jpg",
-      lastEdited: "2 days ago"
+      title: "Lanjutkan",
+      items: [
+        {
+          title: "Alchemist Fragrance",
+          type: "Video",
+          progress: 75,
+          icon: "random"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Video",
+          progress: 45,
+          icon: "random"
+        }
+      ]
     },
     {
-      title: "Beauty of Angel - Up Scrub", 
-      image: "/images/up-scrub.jpg",
-      lastEdited: "3 days ago"
+      title: "Agenda Hari Ini",
+      items: [
+        {
+          title: "Alchemist Fragrance",
+          type: "Video",
+          progress: 90,
+          icon: "clock"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 60,
+          icon: "clock"
+        }
+      ]
     },
     {
-      title: "Beauty of Angel - Lip Scrub",
-      image: "/images/lip-scrub.jpg", 
-      lastEdited: "5 days ago"
+      title: "Agenda Besok",
+      items: [
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 30,
+          icon: "clock"
+        },
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 25,
+          icon: "clock"
+        }
+      ]
+    },
+    {
+      title: "Recovery Delete",
+      items: [
+        {
+          title: "Beauty of Angel - Lip Scrub",
+          type: "Design",
+          progress: 20,
+          icon: "clock"
+        }
+      ]
     }
   ];
 
-  const nextKonten = () => {
-    setCurrentKontenIndex((prev) => (prev + 1) % kontenItems.length);
+  const nextSection = () => {
+    if (currentSection < sectionList.length - 1) {
+      setCurrentSection(currentSection + 1);
+    }
   };
 
-  const prevKonten = () => {
-    setCurrentKontenIndex((prev) => (prev - 1 + kontenItems.length) % kontenItems.length);
+  const prevSection = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
+
+  const getTypeStyle = (type) => {
+    return type === "Video" 
+      ? "bg-[#FFF1F1] text-[#FF5C5C]"
+      : "bg-blue-50 text-blue-500";
+  };
+
+  const getIcon = (iconType) => {
+    return iconType === "random" 
+      ? <FaRandom className="w-3.5 h-3.5 text-white" />
+      : <FaClock className="w-3.5 h-3.5 text-white" />;
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
       <div className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <Navbar />
         </div>
       </div>
       
       {/* Hero Section */}
-      <div className="relative h-[300px] bg-[url('/images/ocean-bg.jpg')] bg-cover bg-center">
+      <div className="relative h-[250px] sm:h-[300px] bg-[url('/images/ocean-bg.jpg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/30">
-          <div className="max-w-7xl mx-auto px-6 h-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full">
             {/* Header */}
-            <div className="flex justify-end items-center gap-4 py-4">
-              <span className="text-white text-sm font-bold">Sisa 5 Kredit</span>
-              <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white text-sm px-4 py-1.5 rounded-xl">
+            <div className="flex justify-end items-center gap-2 sm:gap-4 py-4">
+              <span className="text-white text-xs sm:text-sm font-bold">Sisa 5 Kredit</span>
+              <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-xl">
                 Upgrade plan
               </button>
             </div>
 
             {/* Main Content - Centered */}
-            <div className="flex flex-col items-center mt-16">
-              <h1 className="text-4xl font-semibold text-white mb-8">
+            <div className="flex flex-col items-center mt-8 sm:mt-16">
+              <h1 className="text-2xl sm:text-4xl font-semibold text-white mb-6 sm:mb-8 text-center px-4">
                 Mulai kreasi baru hari ini!
               </h1>
               
               {/* Buat Video Button */}
-              <div className="flex justify-start w-full gap-2 mt-7">
-              <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
-                <span className="font-medium">Buat Video</span>
-                <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
-              </button>
+              <div className="flex justify-start w-full gap-2 mt-4 sm:mt-7 px-2">
+                <button className="bg-violet-600 hover:bg-violet-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl flex items-center gap-2">
+                  <span className="font-medium text-sm sm:text-base">Buat Video</span>
+                  <img src={HalfAdd} alt="Add" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
+                </button>
               </div>
 
               {/* Feature Buttons */}
-              <div className="max-w-3xl mx-auto mt-3">
-                <div className="bg-gradient-to-r from-violet-600 to-violet-900 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex">
-                  <Link to="/url-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <img src={Video} alt="URL to Video" className="text-lg filter invert" />
+              <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-x-auto">
+                <div className="bg-gradient-to-r from-violet-600 to-violet-900 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex min-w-max">
+                  <Link to="/url-to-video" className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                    <img src={Video} alt="URL to Video" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
                     <span>URL to Video</span>
                   </Link>
-                  <Link to="/text-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <img src={Text} alt="Text to Video" className="text-lg filter invert" />
+                  <Link to="/text-to-video" className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                    <img src={Text} alt="Text to Video" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
                     <span>Text to Video</span>
                   </Link>
-                  <Link to="/speech-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <img src={Speech} alt="Speech to Video" className="text-lg filter invert" />
+                  <Link to="/speech-to-video" className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                    <img src={Speech} alt="Speech to Video" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
                     <span>Speech to Video</span>
                   </Link>
-                  <Link to="/ai-avatar" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <img src={Avatar} alt="AI Avatar" className="text-lg filter invert" />
+                  <Link to="/ai-avatar" className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                    <img src={Avatar} alt="AI Avatar" className="w-4 sm:w-5 h-4 sm:h-5 filter invert" />
                     <span>AI Avatar</span>
                   </Link>
                 </div>
@@ -101,98 +166,81 @@ export default function Home() {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Kelola Konten */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Kelola Konten</h2>
-            <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
-              Lainnya
-            </button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Kelola Konten Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Kelola Konten</h2>
           </div>
-
-          {/* Tab Navigation */}
-          <div className="flex gap-8 mb-6 border-b">
-              <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
-              Lanjutkan
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Agenda Hari ini
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Agenda Besok
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Recovery Delete
-            </button>
-          </div>
-
-          {/* Content Cards */}
-          <div className="grid grid-cols-1 gap-4">
-            {kontenItems.map((item, index) => (
-              <div key={index} className="border rounded-lg p-4 flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-1">{item.title}</h3>
-                    <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">
-                      Video
-                    </span>
-                  </div>
-                </div>
-                <button className="p-2 hover:bg-gray-100 rounded-lg">
-                  <FaChevronRight className="text-gray-400" />
-                </button>
-              </div>
-            ))}
-          </div>
+          <button className="px-4 sm:px-6 py-1.5 sm:py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
+            Lainnya
+          </button>
         </div>
 
-        {/* Proyek Section */}
-        <div>
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Proyek</h2>
-              <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
-              Lainnya
-            </button>
-          </div>
-
-          {/* Carousel */}
-          <div className="relative">
-            <div className="flex gap-4 overflow-x-auto pb-4">
-              {kontenItems.map((item, index) => (
-                <div key={index} className="flex-none w-64">
-                  <div className="relative rounded-lg overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
-                    <div className="absolute top-2 left-2 bg-gray-900/60 text-white text-xs px-2 py-1 rounded">
-                      Drafted
+        {/* Carousel Container */}
+        <div className="relative">
+          <div className="overflow-x-auto no-scrollbar">
+            <div className="flex gap-6 pb-4 no-scrollbar">
+              <Swiper
+                modules={[FreeMode]}
+                slidesPerView="auto"
+                spaceBetween={24}
+                freeMode={{
+                  enabled: true,
+                  momentum: true,
+                  momentumRatio: 0.8,
+                  momentumVelocityRatio: 0.9
+                }}
+                mousewheel={true}
+                grabCursor={true}
+                touchEventsTarget="container"
+                touchRatio={1}
+                touchAngle={45}
+                simulateTouch={true}
+                threshold={5}
+                className="mySwiper"
+              >
+                {sectionList.map((section, index) => (
+                  <SwiperSlide key={index} style={{ width: 'auto', cursor: 'grab' }}>
+                    <div className="min-w-[300px] sm:min-w-[400px]">
+                      <h3 className="text-base font-medium mb-4">{section.title}</h3>
+                      <div className="space-y-3">
+                        {section.items.map((item, itemIndex) => (
+                          <div key={itemIndex} className="relative bg-white rounded-2xl border border-gray-200">
+                            <div className="p-4">
+                              <div className="flex justify-between items-start">
+                                <div className="space-y-2">
+                                  <h3 className="font-medium text-sm text-gray-900">{item.title}</h3>
+                                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs ${getTypeStyle(item.type)}`}>
+                                    {item.type}
+                                  </span>
+                                </div>
+                                <button className="p-2 rounded-full bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
+                                  {getIcon(item.icon)}
+                                </button>
+                              </div>
+                            </div>
+                            
+                            {/* Progress bar */}
+                            <div className="h-1 w-full bg-transparent">
+                              <div 
+                                className="h-full bg-violet-500"
+                                style={{ width: `${item.progress}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <button className="absolute top-2 right-2 p-1.5 hover:bg-black/20 rounded">
-                      <FaEllipsisH className="text-white" />
-                    </button>
-                  </div>
-                  <div className="mt-2">
-                    <h3 className="font-medium">{item.title}</h3>
-                    <span className="text-sm text-gray-500">{item.created}</span>
-                  </div>
-                </div>
-              ))}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            
-            {/* Navigation Buttons */}
-            <button className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
-              <FaChevronLeft className="text-gray-600" />
-            </button>
-            <button className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
-              <FaChevronRight className="text-gray-600" />
-            </button>
           </div>
-          {/* Project Section */}
-          <ProjectCard />
-
         </div>
+
+        {/* Project Section */}
+        <ProjectCard />
       </div>
     </div>
   );
