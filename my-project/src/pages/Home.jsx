@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH } from "react-icons/fa";
+import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH, FaClock, FaRandom } from "react-icons/fa";
 import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
 import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
@@ -10,26 +10,72 @@ import Avatar from "../assets/icons/user-star-02.svg";
 import ProjectCard from "../components/ProjectCard";
 
 export default function Home() {
-  const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
+  const sections = {
+    lanjutkan: [
+      {
+        title: "Alchemist Fragrance",
+        type: "Video",
+        progress: 75,
+        icon: "random"
+      },
+      {
+        title: "Beauty of Angel - Lip Scrub",
+        type: "Video",
+        progress: 45,
+        icon: "random"
+      }
+    ],
+    agendaHariIni: [
+      {
+        title: "Alchemist Fragrance",
+        type: "Video",
+        progress: 90,
+        icon: "clock"
+      },
+      {
+        title: "Beauty of Angel - Lip Scrub",
+        type: "Design",
+        progress: 60,
+        icon: "clock"
+      }
+    ],
+    agendaBesok: [
+      {
+        title: "Beauty of Angel - Lip Scrub",
+        type: "Design",
+        progress: 30,
+        icon: "clock"
+      },
+      {
+        title: "Beauty of Angel - Lip Scrub",
+        type: "Design",
+        progress: 25,
+        icon: "clock"
+      }
+    ],
+    recoveryDelete: [
+      {
+        title: "Beauty of Angel - Lip Scrub",
+        type: "Design",
+        progress: 20,
+        icon: "clock"
+      }
+    ]
+  };
 
-  const kontenItems = [
-    {
-      title: "Automated Programme",
-      image: "/images/automated-program.jpg",
-      lastEdited: "2 days ago"
-    },
-    {
-      title: "Beauty of Angel - Up Scrub", 
-      image: "/images/up-scrub.jpg",
-      lastEdited: "3 days ago"
-    },
-    {
-      title: "Beauty of Angel - Lip Scrub",
-      image: "/images/lip-scrub.jpg", 
-      lastEdited: "5 days ago"
-    }
-  ];
+  const [activeTab, setActiveTab] = useState('lanjutkan');
 
+  const getTypeStyle = (type) => {
+    return type === "Video" 
+      ? "bg-pink-50 text-pink-500"
+      : "bg-blue-50 text-blue-500";
+  };
+
+  const getIcon = (iconType) => {
+    return iconType === "random" 
+      ? <FaRandom className="w-4 h-4 text-white" />
+      : <FaClock className="w-4 h-4 text-white" />;
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -95,51 +141,68 @@ export default function Home() {
       {/* Content Section */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Kelola Konten */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Kelola Konten</h2>
-            <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
-              Lainnya
-            </button>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-semibold text-gray-900">Kelola Konten</h2>
           </div>
+          <button className="px-6 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors mr-3">
+            Lainnya
+          </button>
+        </div>
 
-          {/* Tab Navigation */}
-          <div className="flex gap-8 mb-6 border-b">
-            <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
-              Lanjutkan
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Agenda Hari ini
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Agenda Besok
-            </button>
-            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
-              Recovery Delete
-            </button>
-          </div>
+        {/* Tab Navigation */}
+        <div className="flex gap-8 mb-6 border-b">
+          <button 
+            onClick={() => setActiveTab('lanjutkan')}
+            className={`pb-2 px-1 ${activeTab === 'lanjutkan' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
+          >
+            Lanjutkan
+          </button>
+          <button 
+            onClick={() => setActiveTab('agendaHariIni')}
+            className={`pb-2 px-1 ${activeTab === 'agendaHariIni' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
+          >
+            Agenda Hari ini
+          </button>
+          <button 
+            onClick={() => setActiveTab('agendaBesok')}
+            className={`pb-2 px-1 ${activeTab === 'agendaBesok' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
+          >
+            Agenda Besok
+          </button>
+          <button 
+            onClick={() => setActiveTab('recoveryDelete')}
+            className={`pb-2 px-1 ${activeTab === 'recoveryDelete' ? 'text-violet-600 border-b-2 border-violet-600' : 'text-gray-500'}`}
+          >
+            Recovery Delete
+          </button>
+        </div>
 
-          {/* Content Cards */}
-          <div className="grid grid-cols-1 gap-4">
-            {kontenItems.map((item, index) => (
-              <div key={index} className="border rounded-lg p-4 flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-1">{item.title}</h3>
-                    <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">
-                      Video
-                    </span>
-                  </div>
+        {/* Content Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {sections[activeTab].map((item, index) => (
+            <div key={index} className="border rounded-lg p-4 relative">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className="font-medium mb-2">{item.title}</h3>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs ${getTypeStyle(item.type)}`}>
+                    {item.type}
+                  </span>
                 </div>
-                <button className="p-2 hover:bg-gray-100 rounded-lg">
-                  <FaChevronRight className="text-gray-400" />
+                <button className="p-2 rounded-full bg-[#0A0B26]">
+                  {getIcon(item.icon)}
                 </button>
               </div>
-            ))}
-          </div>
+              
+              {/* Progress bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-1">
+                <div 
+                  className="h-full rounded-2xl bg-gradient-to-r from-violet-500 to-purple-500"
+                  style={{ width: `${item.progress}%` }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Project Section */}

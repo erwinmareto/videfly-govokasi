@@ -82,7 +82,7 @@ export default function ProjectCard() {
   };
 
   return (
-    <div className="px-4 mt-8">
+    <div className="px-1 mt-8">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <h2 className="text-xl font-semibold text-gray-900">Proyek</h2>
@@ -100,7 +100,7 @@ export default function ProjectCard() {
           >
             {proyekItems.map((item, index) => (
               <div key={index} className="min-w-[calc(25%-1.2rem)] max-w-[calc(25%-1.2rem)] flex-shrink-0">
-                <div className="relative bg-white rounded-xl overflow-hidden shadow-md">
+                <div className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                   {/* Status and Duration Badge */}
                   <div className="absolute top-3 left-3 right-12 flex justify-between z-10">
                     <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium">
