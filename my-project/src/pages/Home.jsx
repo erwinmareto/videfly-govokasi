@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH } from "react-icons/fa";
 import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
+import Video from "../assets/icons/mage_video.svg";
+import Text from "../assets/icons/fluent_textbox-16-regular.svg";
+import Speech from "../assets/icons/tdesign_user-talk-1.svg";
+import Avatar from "../assets/icons/user-star-02.svg";
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
@@ -89,7 +93,7 @@ export default function Home() {
               
               {/* Buat Video Button */}
               <div className="flex justify-start w-full gap-2 mt-7">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
+              <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
                 <span className="font-medium">Buat Video</span>
                 <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
               </button>
@@ -97,21 +101,21 @@ export default function Home() {
 
               {/* Feature Buttons */}
               <div className="max-w-3xl mx-auto mt-3">
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex">
+                <div className="bg-gradient-to-r from-violet-600 to-violet-900 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex">
                   <Link to="/url-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <FaLink className="text-lg" />
+                    <img src={Video} alt="URL to Video" className="text-lg filter invert" />
                     <span>URL to Video</span>
                   </Link>
                   <Link to="/text-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <FaFileAlt className="text-lg" />
+                    <img src={Text} alt="Text to Video" className="text-lg filter invert" />
                     <span>Text to Video</span>
                   </Link>
                   <Link to="/speech-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <FaMicrophone className="text-lg" />
+                    <img src={Speech} alt="Speech to Video" className="text-lg filter invert" />
                     <span>Speech to Video</span>
                   </Link>
                   <Link to="/ai-avatar" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
-                    <FaRobot className="text-lg" />
+                    <img src={Avatar} alt="AI Avatar" className="text-lg filter invert" />
                     <span>AI Avatar</span>
                   </Link>
                 </div>
@@ -127,14 +131,14 @@ export default function Home() {
         <div className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold">Kelola Konten</h2>
-            <button className="text-purple-600 bg-purple-100 px-4 py-1.5 rounded-full text-sm hover:bg-purple-200">
+            <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
               Lainnya
             </button>
           </div>
 
           {/* Tab Navigation */}
           <div className="flex gap-8 mb-6 border-b">
-            <button className="text-purple-600 border-b-2 border-purple-600 pb-2 px-1">
+              <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
               Lanjutkan
             </button>
             <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
@@ -175,7 +179,7 @@ export default function Home() {
         <div>
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold">Proyek</h2>
-            <button className="text-purple-600 bg-purple-100 px-4 py-1.5 rounded-full text-sm hover:bg-purple-200">
+              <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
               Lainnya
             </button>
           </div>
