@@ -7,10 +7,11 @@ import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
+import ProjectCard from "../components/ProjectCard";
+
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
-  const [currentProyekIndex, setCurrentProyekIndex] = useState(0);
 
   const kontenItems = [
     {
@@ -30,38 +31,12 @@ export default function Home() {
     }
   ];
 
-  const proyekItems = [
-    {
-      title: "Video Produk A",
-      image: "/images/product-a.jpg",
-      created: "1 week ago"
-    },
-    {
-      title: "Video Produk B",
-      image: "/images/product-b.jpg", 
-      created: "2 weeks ago"
-    },
-    {
-      title: "Video Produk C",
-      image: "/images/product-c.jpg",
-      created: "3 weeks ago" 
-    }
-  ];
-
   const nextKonten = () => {
     setCurrentKontenIndex((prev) => (prev + 1) % kontenItems.length);
   };
 
   const prevKonten = () => {
     setCurrentKontenIndex((prev) => (prev - 1 + kontenItems.length) % kontenItems.length);
-  };
-
-  const nextProyek = () => {
-    setCurrentProyekIndex((prev) => (prev + 1) % proyekItems.length);
-  };
-
-  const prevProyek = () => {
-    setCurrentProyekIndex((prev) => (prev - 1 + proyekItems.length) % proyekItems.length);
   };
 
   return (
@@ -214,6 +189,9 @@ export default function Home() {
               <FaChevronRight className="text-gray-600" />
             </button>
           </div>
+          {/* Project Section */}
+          <ProjectCard />
+
         </div>
       </div>
     </div>
