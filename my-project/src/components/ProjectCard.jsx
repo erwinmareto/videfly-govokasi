@@ -171,21 +171,21 @@ export default function ProjectCard() {
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 mt-4">
+        <div className="flex justify-end gap-3 mt-4">
           <button 
             onClick={prevProyek}
             disabled={currentProyekIndex === 0}
-            className={`rounded-full p-1.5 sm:p-2 text-white shadow-lg transition-colors bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 disabled:cursor-not-allowed`}
+            className={`rounded-xl p-1.5 sm:p-2 text-white shadow-lg transition-colors bg-violet-600 hover:bg-violet-700 disabled:bg-violet-500 disabled:cursor-not-allowed`}
           >
             <FaChevronLeft className="text-lg sm:text-xl" />
           </button>
           <button 
             onClick={nextProyek}
             disabled={currentProyekIndex === totalPages - 1} 
-            className={`rounded-full p-1.5 sm:p-2 text-white shadow-lg transition-colors bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 disabled:cursor-not-allowed`}
+            className={`rounded-xl p-1.5 sm:p-2 text-white shadow-lg transition-colors bg-violet-600 hover:bg-violet-700 disabled:bg-violet-500 disabled:cursor-not-allowed`}
           >
             <FaChevronRight className="text-lg sm:text-xl" />
-          </button>
+          </button> 
         </div>
       </div>
     </div>
