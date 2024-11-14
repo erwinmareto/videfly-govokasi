@@ -10,6 +10,41 @@ export default function ProjectCard() {
   const proyekItems = [
     {
       title: "Product A Skincare",
+      status: "Drafted", 
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product A Skincare", 
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00", 
+      image: images.productA,
+    },
+    {
+      title: "Product A Skincare",
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product A Skincare",
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product A Skincare",
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product A Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
@@ -31,19 +66,25 @@ export default function ProjectCard() {
     }
   ];
 
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(proyekItems.length / itemsPerPage);
+
   const nextProyek = () => {
-    setCurrentProyekIndex((prev) => (prev + 1) % proyekItems.length);
+    if (currentProyekIndex < totalPages - 1) {
+      setCurrentProyekIndex(currentProyekIndex + 1);
+    }
   };
 
   const prevProyek = () => {
-    setCurrentProyekIndex((prev) => (prev - 1 + proyekItems.length) % proyekItems.length);
+    if (currentProyekIndex > 0) {
+      setCurrentProyekIndex(currentProyekIndex - 1);
+    }
   };
 
   return (
-    <div className="container mx-auto px-4 mt-8">
+    <div className="px-4 mt-8">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <FaProjectDiagram className="text-xl text-purple-600" />
           <h2 className="text-xl font-semibold text-gray-900">Proyek</h2>
         </div>
         <button className="px-6 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
@@ -55,10 +96,10 @@ export default function ProjectCard() {
         <div className="overflow-hidden">
           <div 
             className="flex gap-6 transition-transform duration-300" 
-            style={{ transform: `translateX(-${currentProyekIndex * 100}%)` }}
+            style={{ transform: `translateX(-${currentProyekIndex * (100 / itemsPerPage * itemsPerPage)}%)` }}
           >
             {proyekItems.map((item, index) => (
-              <div key={index} className="min-w-[280px] max-w-[280px] flex-shrink-0">
+              <div key={index} className="min-w-[calc(25%-1.2rem)] max-w-[calc(25%-1.2rem)] flex-shrink-0">
                 <div className="relative bg-white rounded-xl overflow-hidden shadow-md">
                   {/* Status and Duration Badge */}
                   <div className="absolute top-3 left-3 right-12 flex justify-between z-10">
@@ -100,14 +141,16 @@ export default function ProjectCard() {
 
         <div className="flex justify-end gap-2 mt-4">
           <button 
-            onClick={prevProyek} 
-            className="bg-purple-600 rounded-full p-2 text-white shadow-lg hover:bg-purple-700 transition-colors"
+            onClick={prevProyek}
+            disabled={currentProyekIndex === 0}
+            className={`rounded-full p-2 text-white shadow-lg transition-colors bg-purple-600 hover:bg-purple-700`}
           >
             <FaChevronLeft className="text-xl" />
           </button>
           <button 
-            onClick={nextProyek} 
-            className="bg-purple-600 rounded-full p-2 text-white shadow-lg hover:bg-purple-700 transition-colors"
+            onClick={nextProyek}
+            disabled={currentProyekIndex === totalPages - 1} 
+            className={`rounded-full p-2 text-white shadow-lg transition-colors bg-purple-600 hover:bg-purple-700`}
           >
             <FaChevronRight className="text-xl" />
           </button>

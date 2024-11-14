@@ -9,7 +9,6 @@ import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
 import ProjectCard from "../components/ProjectCard";
 
-
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
 
@@ -31,13 +30,6 @@ export default function Home() {
     }
   ];
 
-  const nextKonten = () => {
-    setCurrentKontenIndex((prev) => (prev + 1) % kontenItems.length);
-  };
-
-  const prevKonten = () => {
-    setCurrentKontenIndex((prev) => (prev - 1 + kontenItems.length) % kontenItems.length);
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -68,10 +60,10 @@ export default function Home() {
               
               {/* Buat Video Button */}
               <div className="flex justify-start w-full gap-2 mt-7">
-              <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
-                <span className="font-medium">Buat Video</span>
-                <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
-              </button>
+                <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
+                  <span className="font-medium">Buat Video</span>
+                  <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
+                </button>
               </div>
 
               {/* Feature Buttons */}
@@ -113,7 +105,7 @@ export default function Home() {
 
           {/* Tab Navigation */}
           <div className="flex gap-8 mb-6 border-b">
-              <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
+            <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
               Lanjutkan
             </button>
             <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
@@ -150,49 +142,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Proyek Section */}
-        <div>
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Proyek</h2>
-              <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
-              Lainnya
-            </button>
-          </div>
-
-          {/* Carousel */}
-          <div className="relative">
-            <div className="flex gap-4 overflow-x-auto pb-4">
-              {kontenItems.map((item, index) => (
-                <div key={index} className="flex-none w-64">
-                  <div className="relative rounded-lg overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
-                    <div className="absolute top-2 left-2 bg-gray-900/60 text-white text-xs px-2 py-1 rounded">
-                      Drafted
-                    </div>
-                    <button className="absolute top-2 right-2 p-1.5 hover:bg-black/20 rounded">
-                      <FaEllipsisH className="text-white" />
-                    </button>
-                  </div>
-                  <div className="mt-2">
-                    <h3 className="font-medium">{item.title}</h3>
-                    <span className="text-sm text-gray-500">{item.created}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Navigation Buttons */}
-            <button className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
-              <FaChevronLeft className="text-gray-600" />
-            </button>
-            <button className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
-              <FaChevronRight className="text-gray-600" />
-            </button>
-          </div>
-          {/* Project Section */}
-          <ProjectCard />
-
-        </div>
+        {/* Project Section */}
+        <ProjectCard />
       </div>
     </div>
   );
