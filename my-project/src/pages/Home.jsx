@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Sidebar from "../components/Sidebar";
+import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH } from "react-icons/fa";
+import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
+import Video from "../assets/icons/mage_video.svg";
+import Text from "../assets/icons/fluent_textbox-16-regular.svg";
+import Speech from "../assets/icons/tdesign_user-talk-1.svg";
+import Avatar from "../assets/icons/user-star-02.svg";
 import ProjectCard from "../components/ProjectCard";
+
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
@@ -35,82 +40,158 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <div>
-      <Navbar />
+    <div className="min-h-screen bg-white">
+      {/* Navbar */}
+      <div className="sticky top-0 z-50 bg-white shadow-md">
+        <div className="max-w-7xl mx-auto">
+          <Navbar />
+        </div>
       </div>
-      <div className="flex-1 bg-gray-50 overflow-y-auto">
-        <div className="p-8">
-          <h1 className="text-2xl font-bold mb-6">Mulai kreasi baru hari ini!</h1>
-          
-          <div className="bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl p-6">
-            <div className="flex gap-4 justify-center">
-              <Link to="/url-to-video" className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 hover:bg-white/20 text-white">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                  <FaLink className="text-2xl" />
-                </div>
-                <span className="text-sm">URL to Video</span>
-              </Link>
-
-              <Link to="/text-to-video" className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 hover:bg-white/20 text-white">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                  <FaFileAlt className="text-2xl" />
-                </div>
-                <span className="text-sm">Text to Video</span>
-              </Link>
-
-              <Link to="/speech-to-video" className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 hover:bg-white/20 text-white">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                  <FaMicrophone className="text-2xl" />
-                </div>
-                <span className="text-sm">Speech to Video</span>
-              </Link>
-
-              <Link to="/ai-avatar" className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 hover:bg-white/20 text-white">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                  <FaRobot className="text-2xl" />
-                </div>
-                <span className="text-sm">AI Avatar</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold flex items-center gap-2">
-                <FaVideo className="text-xl text-purple-600" />
-                Kelola Konten
-              </h2>
-              <Link to="/kelola-konten" className="text-purple-600 text-sm hover:underline">Lihat semua</Link>
-            </div>
-
-            <div className="relative">
-              <button onClick={prevKonten} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md">
-                <FaChevronLeft className="text-gray-600" />
+      
+      {/* Hero Section */}
+      <div className="relative h-[300px] bg-[url('/images/ocean-bg.jpg')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/30">
+          <div className="max-w-7xl mx-auto px-6 h-full">
+            {/* Header */}
+            <div className="flex justify-end items-center gap-4 py-4">
+              <span className="text-white text-sm font-bold">Sisa 5 Kredit</span>
+              <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white text-sm px-4 py-1.5 rounded-xl">
+                Upgrade plan
               </button>
-              <div className="overflow-hidden">
-                <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentKontenIndex * 100}%)` }}>
-                  {kontenItems.map((item, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-4">
-                      <div className="bg-white p-4 rounded-lg shadow-sm">
-                        <h3 className="font-medium mb-2">{item.title}</h3>
-                        <div className="bg-gray-100 h-32 rounded-lg overflow-hidden">
-                          <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="mt-2 text-sm text-gray-500">Last edited {item.lastEdited}</div>
-                      </div>
-                    </div>
-                  ))}
+            </div>
+
+            {/* Main Content - Centered */}
+            <div className="flex flex-col items-center mt-16">
+              <h1 className="text-4xl font-semibold text-white mb-8">
+                Mulai kreasi baru hari ini!
+              </h1>
+              
+              {/* Buat Video Button */}
+              <div className="flex justify-start w-full gap-2 mt-7">
+              <button className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
+                <span className="font-medium">Buat Video</span>
+                <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
+              </button>
+              </div>
+
+              {/* Feature Buttons */}
+              <div className="max-w-3xl mx-auto mt-3">
+                <div className="bg-gradient-to-r from-violet-600 to-violet-900 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex">
+                  <Link to="/url-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
+                    <img src={Video} alt="URL to Video" className="text-lg filter invert" />
+                    <span>URL to Video</span>
+                  </Link>
+                  <Link to="/text-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
+                    <img src={Text} alt="Text to Video" className="text-lg filter invert" />
+                    <span>Text to Video</span>
+                  </Link>
+                  <Link to="/speech-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
+                    <img src={Speech} alt="Speech to Video" className="text-lg filter invert" />
+                    <span>Speech to Video</span>
+                  </Link>
+                  <Link to="/ai-avatar" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
+                    <img src={Avatar} alt="AI Avatar" className="text-lg filter invert" />
+                    <span>AI Avatar</span>
+                  </Link>
                 </div>
               </div>
-              <button onClick={nextKonten} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md">
-                <FaChevronRight className="text-gray-600" />
-              </button>
             </div>
           </div>
+        </div>
+      </div>
 
+      {/* Content Section */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Kelola Konten */}
+        <div className="mb-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">Kelola Konten</h2>
+            <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
+              Lainnya
+            </button>
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="flex gap-8 mb-6 border-b">
+              <button className="text-violet-600 border-b-2 border-violet-600 pb-2 px-1">
+              Lanjutkan
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
+              Agenda Hari ini
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
+              Agenda Besok
+            </button>
+            <button className="text-gray-500 hover:text-gray-700 pb-2 px-1">
+              Recovery Delete
+            </button>
+          </div>
+
+          {/* Content Cards */}
+          <div className="grid grid-cols-1 gap-4">
+            {kontenItems.map((item, index) => (
+              <div key={index} className="border rounded-lg p-4 flex justify-between items-center">
+                <div className="flex items-center gap-4">
+                  <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium mb-1">{item.title}</h3>
+                    <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">
+                      Video
+                    </span>
+                  </div>
+                </div>
+                <button className="p-2 hover:bg-gray-100 rounded-lg">
+                  <FaChevronRight className="text-gray-400" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Proyek Section */}
+        <div>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">Proyek</h2>
+              <button className="text-violet-600 bg-violet-100 px-4 py-1.5 rounded-full text-sm hover:bg-violet-200">
+              Lainnya
+            </button>
+          </div>
+
+          {/* Carousel */}
+          <div className="relative">
+            <div className="flex gap-4 overflow-x-auto pb-4">
+              {proyekItems.map((item, index) => (
+                <div key={index} className="flex-none w-64">
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+                    <div className="absolute top-2 left-2 bg-gray-900/60 text-white text-xs px-2 py-1 rounded">
+                      Drafted
+                    </div>
+                    <button className="absolute top-2 right-2 p-1.5 hover:bg-black/20 rounded">
+                      <FaEllipsisH className="text-white" />
+                    </button>
+                  </div>
+                  <div className="mt-2">
+                    <h3 className="font-medium">{item.title}</h3>
+                    <span className="text-sm text-gray-500">{item.created}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation Buttons */}
+            <button className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
+              <FaChevronLeft className="text-gray-600" />
+            </button>
+            <button className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2">
+              <FaChevronRight className="text-gray-600" />
+            </button>
+          </div>
           {/* Project Section */}
           <ProjectCard />
+
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
@@ -30,6 +31,9 @@ export default {
         "body-md-mb": "0.625rem",
       },
       colors: {
+         'navy': {
+          800: '#1F2937'
+        },
         // Primary Colors
         primary: "#703BE7",
         "primary-hover": "#5D32C4", // Warna untuk hover
