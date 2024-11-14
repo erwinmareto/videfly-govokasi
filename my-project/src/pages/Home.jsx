@@ -17,6 +17,7 @@ import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
@@ -213,7 +214,7 @@ export default function Home() {
           {/* Carousel */}
           <div className="relative">
             <div className="flex gap-4 pb-4 overflow-x-auto">
-              {proyekItems.map((item, index) => (
+              {kontenItems.map((item, index) => (
                 <div key={index} className="flex-none w-64">
                   <div className="relative overflow-hidden rounded-lg">
                     <img
@@ -246,6 +247,8 @@ export default function Home() {
               <FaChevronRight className="text-gray-600" />
             </button>
           </div>
+          {/* Project Section */}
+          <ProjectCard />
         </div>
       </div>
     </div>
