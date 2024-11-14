@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .heading-1 {
+    @apply text-h1 font-semibold;
+  }
+  .heading-2 {
+    @apply text-h2 font-semibold;
+  }
+  .heading-3 {
+    @apply text-h3 font-semibold;
+  }
+  .heading-4 {
+    @apply text-h4 font-semibold;
+  }
+  .heading-5 {
+    @apply text-h5 font-semibold;
+  }
+  .heading-6 {
+    @apply text-h6 font-semibold;
+  }
+  .body-xl {
+    @apply text-body-xl font-semibold;
+  }
+  .body-lg {
+    @apply text-body-lg font-semibold;
+  }
+  .body-md {
+    @apply text-body-md font-semibold;
+  }
+  .body-sm {
+    @apply text-body-sm font-semibold;
+  }
+  .body-xs {
+    @apply text-body-xs font-semibold;
+  }
+  .sub-head-1 {
+    @apply text-sub-head-1 font-semibold;
+  }
+  .sub-head-2 {
+    @apply text-sub-head-2 font-semibold;
+  }
+  .sub-head-3 {
+    @apply text-sub-head-3 font-semibold;
+  }
+
+  .btn-primary {
+    @apply font-nunito text-sm text-white bg-primary rounded-lg transition-colors px-5 py-1.5 hover:bg-primary-hover focus:ring-primary-secondary;
+  }
+}
