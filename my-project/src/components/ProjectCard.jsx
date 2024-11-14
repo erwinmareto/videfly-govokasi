@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import {
   FaChevronLeft,
   FaChevronRight,
-  FaProjectDiagram,
 } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,49 +33,63 @@ function ProjectCard() {
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product B Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product C Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product D Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product E Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product F Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product G Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
-      title: "Product A Skincare",
+      title: "Product H Skincare",
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product IU Skincare",
+      status: "Drafted",
+      date: "9 Oktober 2024",
+      duration: "01:00",
+      image: images.productA,
+    },
+    {
+      title: "Product DX Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
       duration: "01:00",
@@ -93,25 +106,22 @@ function ProjectCard() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const totalPages = Math.ceil(proyekItems.length / itemsPerPage);
+  // const totalPages = Math.ceil(proyekItems.length / itemsPerPage);
 
   const nextProyek = () => {
-    if (currentProyekIndex < totalPages - 1) {
-      setCurrentProyekIndex(prev => prev + 1);
-      swiperRef.current?.slideNext();
+    if (currentProyekIndex < proyekItems.length - itemsPerPage) {
+      const nextIndex = currentProyekIndex + itemsPerPage;
+      setCurrentProyekIndex(nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex);
+      swiperRef.current?.slideTo(nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex);
     }
   };
 
   const prevProyek = () => {
     if (currentProyekIndex > 0) {
-      setCurrentProyekIndex(prev => prev - 1);
-      swiperRef.current?.slidePrev();
+      const prevIndex = currentProyekIndex - itemsPerPage;
+      setCurrentProyekIndex(prevIndex < 0 ? 0 : prevIndex);
+      swiperRef.current?.slideTo(prevIndex < 0 ? 0 : prevIndex);
     }
-  };
-
-  const calculateTransform = () => {
-    const itemWidth = 100 / itemsPerPage;
-    return currentProyekIndex * itemWidth;
   };
 
   return (
@@ -209,7 +219,7 @@ function ProjectCard() {
           </button>
           <button
             onClick={nextProyek}
-            disabled={currentProyekIndex === totalPages - 1}
+            disabled={currentProyekIndex >= proyekItems.length - itemsPerPage}
             className={`rounded-xl p-1.5 sm:p-2 text-white shadow-lg transition-colors bg-violet-600 hover:bg-violet-700 disabled:bg-violet-500 disabled:cursor-not-allowed`}
           >
             <FaChevronRight className="text-lg sm:text-xl" />
