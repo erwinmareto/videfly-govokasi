@@ -1,12 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from "../assets/icons/home-03.svg";
-import Streamline from "../assets/icons/streamline_ai-edit-spark.svg";
-import HeroIcon from "../assets/icons/heroicons-outline_color-swatch.svg";
-import AvatarIcon from "../assets/icons/user-star-02.svg";
-import CalendarIcon from "../assets/icons/calendar-03.svg";
-import FileIcon from "../assets/icons/solar_library-linear.svg";
-import TrashIcon from "../assets/icons/delete-02.svg";
+import icons from "../constant/icons";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -64,7 +58,7 @@ export default function Navbar() {
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600 group"
             >
               <img
-                src={HomeIcon}
+                src={icons.HomeIcon}
                 alt="Home"
                 className="mr-2 h-5 w-6 group-hover:fill-current group-hover:text-violet-600"
               />
@@ -75,7 +69,7 @@ export default function Navbar() {
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
               <img
-                src={CalendarIcon}
+                src={icons.CalendarIcon}
                 alt="Kelola Konten"
                 className="mr-2 h-5 w-6"
               />
@@ -85,35 +79,35 @@ export default function Navbar() {
               to="/proyek"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={FileIcon} alt="Proyek" className="mr-2 h-5 w-6" />
+              <img src={icons.FileIcon} alt="Proyek" className="mr-2 h-5 w-6" />
               <span>Proyek</span>
             </Link>
             <Link
               to="/ai-tools"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={Streamline} alt="AI Tools" className="mr-2 h-5 w-6" />
+              <img src={icons.Streamline} alt="AI Tools" className="mr-2 h-5 w-6" />
               <span>AI Tools</span>
             </Link>
             <Link
               to="/avatar"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={AvatarIcon} alt="Avatar" className="mr-2 h-5 w-6" />
+              <img src={icons.AvatarIcon} alt="Avatar" className="mr-2 h-5 w-6" />
               <span>Avatar</span>
             </Link>
             <Link
               to="/brand-kit"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={HeroIcon} alt="Brand Kit" className="mr-2 h-5 w-6" />
+              <img src={icons.HeroIcon} alt="Brand Kit" className="mr-2 h-5 w-6" />
               <span>Brand Kit</span>
             </Link>
             <Link
               to="/brand-kit"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={TrashIcon} alt="Trash" className="mr-2 h-5 w-6" />
+              <img src={icons.TrashIcon} alt="Trash" className="mr-2 h-5 w-6" />
               <span>Trash</span>
             </Link>
           </div>
@@ -126,49 +120,49 @@ export default function Navbar() {
               to="/"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={HomeIcon} alt="Home" className="mr-2 h-5 w-6" />
+              <img src={icons.HomeIcon} alt="Home" className="mr-2 h-5 w-6" />
               <span>Beranda</span>
             </Link>
             <Link
               to="/kelola-konten"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={CalendarIcon} alt="Kelola Konten" className="mr-2 h-5 w-6" />
+              <img src={icons.CalendarIcon} alt="Kelola Konten" className="mr-2 h-5 w-6" />
               <span>Kelola Konten</span>
             </Link>
             <Link
               to="/proyek"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={FileIcon} alt="Proyek" className="mr-2 h-5 w-6" />
+              <img src={icons.FileIcon} alt="Proyek" className="mr-2 h-5 w-6" />
               <span>Proyek</span>
             </Link>
             <Link
               to="/ai-tools"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={Streamline} alt="AI Tools" className="mr-2 h-5 w-6" />
+              <img src={icons.Streamline} alt="AI Tools" className="mr-2 h-5 w-6" />
               <span>AI Tools</span>
             </Link>
             <Link
               to="/avatar"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={AvatarIcon} alt="Avatar" className="mr-2 h-5 w-6" />
+              <img src={icons.AvatarIcon} alt="Avatar" className="mr-2 h-5 w-6" />
               <span>Avatar</span>
             </Link>
             <Link
               to="/brand-kit"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={HeroIcon} alt="Brand Kit" className="mr-2 h-5 w-6" />
+              <img src={icons.HeroIcon} alt="Brand Kit" className="mr-2 h-5 w-6" />
               <span>Brand Kit</span>
             </Link>
             <Link
               to="/trash"
               className="flex items-center px-3 py-2 rounded-md text-sm font-bold text-gray-700 hover:text-violet-600 hover:bg-gray-100"
             >
-              <img src={TrashIcon} alt="Trash" className="mr-2 h-5 w-6" />
+              <img src={icons.TrashIcon} alt="Trash" className="mr-2 h-5 w-6" />
               <span>Trash</span>
             </Link>
           </div>
