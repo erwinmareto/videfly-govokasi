@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { FaLink, FaFileAlt, FaMicrophone, FaRobot, FaVideo, FaProjectDiagram, FaChevronLeft, FaChevronRight, FaEllipsisH } from "react-icons/fa";
+import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
 
 export default function Home() {
   const [currentKontenIndex, setCurrentKontenIndex] = useState(0);
@@ -61,7 +62,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      {/* Navbar */}
+      <div className="sticky top-0 z-50 bg-white shadow-md">
+        <div className="max-w-7xl mx-auto">
+          <Navbar />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <div className="relative h-[300px] bg-[url('/images/ocean-bg.jpg')] bg-cover bg-center">
@@ -69,27 +75,29 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 h-full">
             {/* Header */}
             <div className="flex justify-end items-center gap-4 py-4">
-              <span className="text-white text-sm">Sisa 5 Kredit</span>
-              <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-1.5 rounded-full">
+              <span className="text-white text-sm font-bold">Sisa 5 Kredit</span>
+              <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white text-sm px-4 py-1.5 rounded-xl">
                 Upgrade plan
               </button>
             </div>
 
             {/* Main Content - Centered */}
             <div className="flex flex-col items-center mt-16">
-              <h1 className="text-4xl font-bold text-white mb-8">
+              <h1 className="text-4xl font-semibold text-white mb-8">
                 Mulai kreasi baru hari ini!
               </h1>
               
               {/* Buat Video Button */}
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-full flex items-center gap-2">
+              <div className="flex justify-start w-full gap-2 mt-7">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-xl flex items-center gap-2">
                 <span className="font-medium">Buat Video</span>
-                <span className="border-2 rounded-full w-5 h-5 flex items-center justify-center text-sm">+</span>
+                <img src={HalfAdd} alt="Add" className="w-5 h-5 filter invert" />
               </button>
+              </div>
 
               {/* Feature Buttons */}
-              <div className="max-w-3xl mx-auto mt-8">
-                <div className="bg-purple-600 rounded-full p-1.5 gap-2 justify-center shadow-lg inline-flex">
+              <div className="max-w-3xl mx-auto mt-3">
+                <div className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl p-1.5 gap-2 justify-center shadow-lg inline-flex">
                   <Link to="/url-to-video" className="flex items-center gap-2 text-white px-4 py-2 hover:bg-white/10 rounded-full">
                     <FaLink className="text-lg" />
                     <span>URL to Video</span>
