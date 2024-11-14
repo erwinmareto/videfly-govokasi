@@ -258,7 +258,7 @@ export default function Home() {
                     style={{ width: "auto", cursor: "grab" }}
                   >
                     <div className="min-w-[300px] sm:min-w-[400px]">
-                      <h3 className="text-base font-medium mb-4">
+                      <h3 className="text-body-xl sm:text-base font-medium text-gray-500 mb-4">
                         {section.title}
                       </h3>
                       <div className="space-y-3">
@@ -288,9 +288,9 @@ export default function Home() {
                             </div>
 
                             {/* Progress bar */}
-                            <div className="h-1 w-full bg-transparent">
+                            <div className="h-0.5 w-full bg-transparent">
                               <div
-                                className="h-full bg-violet-500"
+                                className="h-0.5 rounded-xl bg-violet-500 ml-2"
                                 style={{ width: `${item.progress}%` }}
                               />
                             </div>
