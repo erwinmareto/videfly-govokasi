@@ -6,6 +6,10 @@
   scroll-behavior: smooth;
 }
 
+.clip-corner {
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
+}
+
 @layer utilities {
   .heading-1 {
     @apply text-h1 font-semibold;

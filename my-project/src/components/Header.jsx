@@ -3,6 +3,8 @@ import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
+import Notification from "../assets/icons/notification-01.svg";
+import ProfilePic from "../assets/images/profile-pic.png";
 import headerVideo from "../assets/video/hero-video.mp4";
 import { Link } from "react-router-dom";
 
@@ -20,12 +22,40 @@ const Header = () => {
       <div className="absolute inset-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full">
           {/* Header */}
-          <div className="hidden justify-end items-center gap-2 py-4 sm:gap-4 md:flex">
+          <div className="hidden justify-end items-center gap-2 py-4 mr-24 sm:gap-4 md:flex">
             <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
               Sisa 5 Kredit
             </span>
             <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90">
               Upgrade plan
+            </button>
+
+            {/* Notification and Profile
+            <div className="flex items-center gap-4 rounded-lg">
+              <button className="flex justify-center items-center bg-accent rounded-full">
+                <img src={Notification} alt="Notification" />
+              </button>
+              <button>
+                <img
+                  src={ProfilePic}
+                  alt="Profile Picture"
+                  className="w-10 h-10 rounded-full"
+                />
+              </button>
+            </div> */}
+          </div>
+
+          {/* Notification and Profile */}
+          <div className="absolute right-2 top-1.5 flex items-center gap-4 p-2 rounded-lg rounded-tl-none rounded-br-none bg-white">
+            <button className="flex justify-center items-center bg-accent rounded-full">
+              <img src={Notification} alt="Notification" />
+            </button>
+            <button>
+              <img
+                src={ProfilePic}
+                alt="Profile Picture"
+                className="w-10 h-10 rounded-full"
+              />
             </button>
           </div>
 
