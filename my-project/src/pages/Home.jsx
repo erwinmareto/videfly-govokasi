@@ -120,7 +120,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#D0D0D0]">
       {/* Navbar */}
       <div className="sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -129,156 +129,165 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <Header />
+      <div className="bg-white m-2 rounded-lg">
+        <Header />
 
-      <section className="flex justify-center items-start font-poppins font-semibold gap-6 px-8 py-4 md:hidden">
-        <div className="flex flex-col justify-center items-center gap-1">
-          <button className="bg-gradient-primary p-2 rounded-full">
-            <img
-              src={HalfAdd}
-              alt="Add Video"
-              className="w-6 h-6 filter invert"
-            />
-          </button>
-          <p className="text-[0.5rem] text-center">Buat Video</p>
-        </div>
-        <div className="flex flex-col justify-center items-center gap-1">
-          <button className="bg-gradient-primary p-2 rounded-full">
-            <img
-              src={Video}
-              alt="URL to Video"
-              className="w-6 h-6 filter invert"
-            />
-          </button>
-          <p className="text-[0.5rem] text-center">URL to Video</p>
-        </div>
-        <div className="flex flex-col justify-center items-center gap-1">
-          <button className="bg-gradient-primary p-2 rounded-full">
-            <img
-              src={Text}
-              alt="Text to video"
-              className="w-6 h-6 filter invert"
-            />
-          </button>
-          <p className="text-[0.5rem] text-center">Text to Video</p>
-        </div>
-        <div className="flex flex-col justify-center items-center gap-1">
-          <button className="bg-gradient-primary p-2 rounded-full">
-            <img
-              src={Speech}
-              alt="Speech to Video"
-              className="w-6 h-6 filter invert"
-            />
-          </button>
-          <p className="text-[0.5rem] text-center">Speech to Video</p>
-        </div>
-        <div className="flex flex-col justify-center items-center gap-1">
-          <Link
-            to="/ai-avatar"
-            className="bg-gradient-primary p-2 rounded-full"
-          >
-            <img
-              src={Avatar}
-              alt="AI Avatar"
-              className="w-6 h-6 filter invert"
-            />
+        <section className="relative z-50 flex justify-center items-start font-poppins font-semibold gap-4 px-8 py-4 md:hidden">
+          <Link to="/add-video">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
+                <img
+                  src={HalfAdd}
+                  alt="Add Video"
+                  className="w-7 h-7 filter invert"
+                />
+              </button>
+              <p className="text-[0.5rem] text-center">Buat Video</p>
+            </div>
           </Link>
-          <p className="text-[0.5rem] text-center">AI Avatar</p>
-        </div>
-      </section>
+          <Link to="/url-to-video">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
+                <img
+                  src={Video}
+                  alt="URL to Video"
+                  className="w-7 h-7 filter invert"
+                />
+              </button>
+              <p className="text-[0.5rem] text-center">URL to Video</p>
+            </div>
+          </Link>
+          <Link to="/text-to-video">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
+                <img
+                  src={Text}
+                  alt="Text to Video"
+                  className="w-7 h-7 filter invert"
+                />
+              </button>
+              <p className="text-[0.5rem] text-center">Text to Video</p>
+            </div>
+          </Link>
+          <Link to="/speech-to-video">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
+                <img
+                  src={Speech}
+                  alt="Speech to Video"
+                  className="w-7 h-7 filter invert"
+                />
+              </button>
+              <p className="text-[0.5rem] text-center">Speech to Video</p>
+            </div>
+          </Link>
+          <Link to="/AI-avatar">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
+                <img
+                  src={Avatar}
+                  alt="AI Avatar"
+                  className="w-7 h-7 filter invert"
+                />
+              </button>
+              <p className="text-[0.5rem] text-center">AI Avatar</p>
+            </div>
+          </Link>
+        </section>
 
-      {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Kelola Konten Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
-              Kelola Konten
-            </h2>
+        {/* Content Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+          {/* Kelola Konten Header */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+                Kelola Konten
+              </h2>
+            </div>
+            <button className="px-4 sm:px-6 py-1.5 sm:py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
+              Lainnya
+            </button>
           </div>
-          <button className="px-4 sm:px-6 py-1.5 sm:py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
-            Lainnya
-          </button>
-        </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
-          <div className="overflow-x-auto no-scrollbar">
-            <div className="flex gap-6 pb-4 no-scrollbar">
-              <Swiper
-                modules={[FreeMode]}
-                slidesPerView="auto"
-                spaceBetween={24}
-                freeMode={{
-                  enabled: true,
-                  momentum: true,
-                  momentumRatio: 0.8,
-                  momentumVelocityRatio: 0.9,
-                }}
-                mousewheel={true}
-                grabCursor={true}
-                touchEventsTarget="container"
-                touchRatio={1}
-                touchAngle={45}
-                simulateTouch={true}
-                threshold={5}
-                className="mySwiper"
-              >
-                {sectionList.map((section, index) => (
-                  <SwiperSlide
-                    key={index}
-                    style={{ width: "auto", cursor: "grab" }}
-                  >
-                    <div className="min-w-[300px] sm:min-w-[400px]">
-                      <h3 className="text-body-xl sm:text-base font-medium text-gray-500 mb-4">
-                        {section.title}
-                      </h3>
-                      <div className="space-y-3">
-                        {section.items.map((item, itemIndex) => (
-                          <div
-                            key={itemIndex}
-                            className="relative bg-white rounded-2xl border border-gray-200"
-                          >
-                            <div className="p-4">
-                              <div className="flex justify-between items-start">
-                                <div className="space-y-2">
-                                  <h3 className="font-medium text-sm text-gray-900">
-                                    {item.title}
-                                  </h3>
-                                  <span
-                                    className={`inline-block px-2.5 py-0.5 rounded-full text-xs ${getTypeStyle(
-                                      item.type
-                                    )}`}
-                                  >
-                                    {item.type}
-                                  </span>
+          {/* Carousel Container */}
+          <div className="relative">
+            <div className="overflow-x-auto no-scrollbar">
+              <div className="flex gap-6 pb-4 no-scrollbar">
+                <Swiper
+                  modules={[FreeMode]}
+                  slidesPerView="auto"
+                  spaceBetween={24}
+                  freeMode={{
+                    enabled: true,
+                    momentum: true,
+                    momentumRatio: 0.8,
+                    momentumVelocityRatio: 0.9,
+                  }}
+                  mousewheel={true}
+                  grabCursor={true}
+                  touchEventsTarget="container"
+                  touchRatio={1}
+                  touchAngle={45}
+                  simulateTouch={true}
+                  threshold={5}
+                  className="mySwiper"
+                >
+                  {sectionList.map((section, index) => (
+                    <SwiperSlide
+                      key={index}
+                      style={{ width: "auto", cursor: "grab" }}
+                    >
+                      <div className="min-w-[300px] sm:min-w-[400px]">
+                        <h3 className="text-body-xl sm:text-base font-medium text-gray-500 mb-4">
+                          {section.title}
+                        </h3>
+                        <div className="space-y-3">
+                          {section.items.map((item, itemIndex) => (
+                            <div
+                              key={itemIndex}
+                              className="relative bg-white rounded-2xl border border-gray-200"
+                            >
+                              <div className="p-4">
+                                <div className="flex justify-between items-start">
+                                  <div className="space-y-2">
+                                    <h3 className="font-medium text-sm text-gray-900">
+                                      {item.title}
+                                    </h3>
+                                    <span
+                                      className={`inline-block px-2.5 py-0.5 rounded-full text-xs ${getTypeStyle(
+                                        item.type
+                                      )}`}
+                                    >
+                                      {item.type}
+                                    </span>
+                                  </div>
+                                  <button className="p-2 rounded-full bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
+                                    {getIcon(item.icon)}
+                                  </button>
                                 </div>
-                                <button className="p-2 rounded-full bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
-                                  {getIcon(item.icon)}
-                                </button>
+                              </div>
+
+                              {/* Progress bar */}
+                              <div className="h-0.5 w-full bg-transparent">
+                                <div
+                                  className="h-0.5 rounded-xl bg-violet-500 ml-2"
+                                  style={{ width: `${item.progress}%` }}
+                                />
                               </div>
                             </div>
-
-                            {/* Progress bar */}
-                            <div className="h-0.5 w-full bg-transparent">
-                              <div
-                                className="h-0.5 rounded-xl bg-violet-500 ml-2"
-                                style={{ width: `${item.progress}%` }}
-                              />
-                            </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Project Section */}
-        <ProjectCard />
+          {/* Project Section */}
+          <ProjectCard />
+        </div>
       </div>
     </div>
   );
