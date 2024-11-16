@@ -3,7 +3,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
@@ -31,8 +30,8 @@ export default {
         "body-md-mb": "0.625rem",
       },
       colors: {
-         'navy': {
-          800: '#1F2937'
+        navy: {
+          800: "#1F2937",
         },
         // Primary Colors
         primary: "#703BE7",
@@ -72,6 +71,8 @@ export default {
         error: "#FE846F",
         "error-hover": "#D96B57",
         "error-content": "#FFD9D2",
+
+        alert: "#E94057",
       },
       boxShadow: {
         "3xl": "0 10px 40px rgba(0, 0, 0, 0.1)",
