@@ -13,12 +13,13 @@ import NotificationMenu from "./Menus/NotificationMenu";
 import ProfileMenu from "./Menus/ProfileMenu";
 
 const Header = () => {
-  const [openMenu, setOpenMenu] = useState(null); // Track which menu is open
+  const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menu) => {
     // If the menu clicked is already open, close it; otherwise, open the new menu
     setOpenMenu(openMenu === menu ? null : menu);
   };
+
   return (
     <div className="relative h-[250px] sm:h-[300px]">
       <video
@@ -109,53 +110,52 @@ const Header = () => {
             </div>
 
             {/* Feature Buttons */}
-            <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-x-auto hidden md:block">
-              <div className="font-poppins font-semibold bg-gradient-primary rounded-2xl p-2 gap-2 justify-center shadow-lg min-w-max inline-flex">
-                <Link
-                  to="/url-to-video"
-                  className="flex items-center gap-3 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2.5 hover:bg-white/10 rounded-xl full text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Video}
-                    alt="URL to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>URL to Video</span>
-                </Link>
-                <Link
-                  to="/text-to-video"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Text}
-                    alt="Text to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>Text to Video</span>
-                </Link>
-                <Link
-                  to="/speech-to-video"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Speech}
-                    alt="Speech to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>Speech to Video</span>
-                </Link>
-                <Link
-                  to="/ai-avatar"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Avatar}
-                    alt="AI Avatar"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>AI Avatar</span>
-                </Link>
-              </div>
+            {/* <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-hidden hidden md:block bg-orange-200"> */}
+            <div className="hidden min-w-max bg-gradient-primary font-poppins font-semibold p-2 justify-center gap-2 rounded-2xl shadow-lg md:inline-flex md:mt-3 lg:mt-6">
+              <Link
+                to="/url-to-video"
+                className="flex items-center gap-3 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2.5 hover:bg-white/10 rounded-xl full text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Video}
+                  alt="URL to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>URL to Video</span>
+              </Link>
+              <Link
+                to="/text-to-video"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Text}
+                  alt="Text to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>Text to Video</span>
+              </Link>
+              <Link
+                to="/speech-to-video"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Speech}
+                  alt="Speech to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>Speech to Video</span>
+              </Link>
+              <Link
+                to="/ai-avatar"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Avatar}
+                  alt="AI Avatar"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>AI Avatar</span>
+              </Link>
             </div>
           </div>
         </div>
