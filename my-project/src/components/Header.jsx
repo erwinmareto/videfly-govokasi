@@ -37,7 +37,7 @@ const Header = () => {
             <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
               Sisa 5 Kredit
             </span>
-            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90">
+            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90 hover:bg-[length:600%_200%] hover:animate-gradient-flow">
               Upgrade plan
             </button>
           </div>
