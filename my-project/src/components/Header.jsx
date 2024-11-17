@@ -37,33 +37,39 @@ const Header = () => {
             <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
               Sisa 5 Kredit
             </span>
-            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90">
+            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90 hover:bg-[length:600%_200%] hover:animate-gradient-flow">
               Upgrade plan
             </button>
           </div>
 
           {/* Notification and Profile */}
-          <div className="hidden absolute right-2 top-1.5 items-center gap-4 p-2 rounded-lg rounded-tl-none rounded-br-none bg-white lg:flex">
-            <button
-              className="flex justify-center items-center bg-accent rounded-full"
-              onClick={() => toggleMenu("notif")}
-            >
-              <img src={Notification} alt="Notification" />
-            </button>
-            <button onClick={() => toggleMenu("profile")}>
-              <img
-                src={ProfilePic1}
-                alt="Profile Picture"
-                className="w-10 h-10 rounded-full"
-              />
-            </button>
+          <div className="hidden absolute right-0 top-0 bg-white pl-2 pb-2 rounded-lg lg:flex">
+            <div className="bg-[#D0D0D0] pl-2 pb-2 rounded-lg rounded-tl-none rounded-br-none">
+              <div className="bg-white flex items-center gap-4 p-2 rounded-lg">
+                <button
+                  className="flex justify-center items-center bg-accent rounded-full"
+                  onClick={() => toggleMenu("notif")}
+                >
+                  <img src={Notification} alt="Notification" />
+                </button>
+                <button onClick={() => toggleMenu("profile")}>
+                  <img
+                    src={ProfilePic1}
+                    alt="Profile Picture"
+                    className="w-10 h-10 rounded-full"
+                  />
+                </button>
 
-            {/* Notifications Menu */}
-            {openMenu === "notif" && (
-              <NotificationMenu toggleMenu={toggleMenu} />
-            )}
+                {/* Notifications Menu */}
+                {openMenu === "notif" && (
+                  <NotificationMenu toggleMenu={toggleMenu} />
+                )}
 
-            {openMenu === "profile" && <ProfileMenu toggleMenu={toggleMenu} />}
+                {openMenu === "profile" && (
+                  <ProfileMenu toggleMenu={toggleMenu} />
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Main Content - Centered */}
