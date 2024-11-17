@@ -132,7 +132,7 @@ export default function Home() {
       <div className="bg-white m-2 rounded-lg">
         <Header />
 
-        <section className="relative z-50 flex justify-center items-start font-poppins font-semibold gap-4 px-8 py-4 md:hidden">
+        <section className="relative z-40 flex justify-center items-start font-poppins font-semibold gap-4 px-8 py-4 md:hidden">
           <Link to="/add-video">
             <div className="flex flex-col justify-center items-center gap-1">
               <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
