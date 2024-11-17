@@ -19,6 +19,7 @@ import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
 import Speech from "../assets/icons/tdesign_user-talk-1.svg";
 import Avatar from "../assets/icons/user-star-02.svg";
+import Scissor from "../assets/icons/scissor.svg";
 import ProjectCard from "../components/ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -36,13 +37,13 @@ export default function Home() {
           title: "Alchemist Fragrance",
           type: "Video",
           progress: 75,
-          icon: "random",
+          icon: "cut",
         },
         {
           title: "Beauty of Angel - Lip Scrub",
           type: "Video",
           progress: 45,
-          icon: "random",
+          icon: "cut",
         },
       ],
     },
@@ -53,13 +54,13 @@ export default function Home() {
           title: "Alchemist Fragrance",
           type: "Video",
           progress: 90,
-          icon: "clock",
+          icon: "add",
         },
         {
           title: "Beauty of Angel - Lip Scrub",
           type: "Design",
           progress: 60,
-          icon: "clock",
+          icon: "add",
         },
       ],
     },
@@ -70,13 +71,13 @@ export default function Home() {
           title: "Beauty of Angel - Lip Scrub",
           type: "Design",
           progress: 30,
-          icon: "clock",
+          icon: "add",
         },
         {
           title: "Beauty of Angel - Lip Scrub",
           type: "Design",
           progress: 25,
-          icon: "clock",
+          icon: "add",
         },
       ],
     },
@@ -87,7 +88,7 @@ export default function Home() {
           title: "Beauty of Angel - Lip Scrub",
           type: "Design",
           progress: 20,
-          icon: "clock",
+          icon: "add",
         },
       ],
     },
@@ -107,15 +108,15 @@ export default function Home() {
 
   const getTypeStyle = (type) => {
     return type === "Video"
-      ? "bg-[#FFF1F1] text-[#FF5C5C]"
-      : "bg-blue-50 text-blue-500";
+      ? "bg-error-content text-error"
+      : "bg-success-content text-success";
   };
 
   const getIcon = (iconType) => {
-    return iconType === "random" ? (
-      <FaRandom className="w-3.5 h-3.5 text-white" />
+    return iconType === "cut" ? (
+      <img src={HalfAdd} alt="Add Video" className="w-6 h-6 invert" />
     ) : (
-      <FaClock className="w-3.5 h-3.5 text-white" />
+      <img src={Scissor} alt="Scissor" className="w-6 h-6" />
     );
   };
 
@@ -200,11 +201,11 @@ export default function Home() {
           {/* Kelola Konten Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+              <h2 className="text-lg sm:text-xl font-nunito font-extrabold text-gray-900">
                 Kelola Konten
               </h2>
             </div>
-            <button className="px-4 sm:px-6 py-1.5 sm:py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
+            <button className="px-4 sm:px-5 py-1.5 sm:py-2 font-nunito font-extrabold bg-primary text-white text-xs sm:text-sm rounded-lg hover:bg-primary-hover transition-colors">
               Lainnya
             </button>
           </div>
@@ -238,7 +239,7 @@ export default function Home() {
                       style={{ width: "auto", cursor: "grab" }}
                     >
                       <div className="min-w-[300px] sm:min-w-[400px]">
-                        <h3 className="text-body-xl sm:text-base font-medium text-gray-500 mb-4">
+                        <h3 className="font-poppins font-semibold text-body-xl sm:text-base text-gray-500 mb-4">
                           {section.title}
                         </h3>
                         <div className="space-y-3">
@@ -248,20 +249,20 @@ export default function Home() {
                               className="relative bg-white rounded-2xl border border-gray-200"
                             >
                               <div className="p-4">
-                                <div className="flex justify-between items-start">
+                                <div className="font-poppins flex justify-between items-start">
                                   <div className="space-y-2">
-                                    <h3 className="font-medium text-sm text-gray-900">
+                                    <h3 className="font-semibold text-sm text-gray-900">
                                       {item.title}
                                     </h3>
                                     <span
-                                      className={`inline-block px-2.5 py-0.5 rounded-full text-xs ${getTypeStyle(
+                                      className={`inline-block px-2.5 py-0.5 rounded-lg text-xs ${getTypeStyle(
                                         item.type
                                       )}`}
                                     >
                                       {item.type}
                                     </span>
                                   </div>
-                                  <button className="p-2 rounded-full bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
+                                  <button className="p-3 rounded-lg bg-[#0A0B26] hover:bg-[#1a1b46] transition-colors">
                                     {getIcon(item.icon)}
                                   </button>
                                 </div>
