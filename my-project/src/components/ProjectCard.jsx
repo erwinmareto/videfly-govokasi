@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
-import { FreeMode } from 'swiper/modules';
+import "swiper/css";
+import { FreeMode } from "swiper/modules";
 import icons from "../constant/icons";
 import images from "../constant/images";
 
@@ -25,7 +22,7 @@ function ProjectCard() {
   const swiperRef = useRef(null);
 
   const proyekItems = [
-    { 
+    {
       title: "Product A Skincare",
       status: "Drafted",
       date: "9 Oktober 2024",
@@ -34,7 +31,7 @@ function ProjectCard() {
     },
     {
       title: "Product B Skincare",
-      status: "Drafted",
+      status: "01:00",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
@@ -48,14 +45,14 @@ function ProjectCard() {
     },
     {
       title: "Product D Skincare",
-      status: "Drafted",
+      status: "01:00",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
     },
     {
       title: "Product E Skincare",
-      status: "Drafted",
+      status: "01:00",
       date: "9 Oktober 2024",
       duration: "01:00",
       image: images.productA,
@@ -111,8 +108,12 @@ function ProjectCard() {
   const nextProyek = () => {
     if (currentProyekIndex < proyekItems.length - itemsPerPage) {
       const nextIndex = currentProyekIndex + itemsPerPage;
-      setCurrentProyekIndex(nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex);
-      swiperRef.current?.slideTo(nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex);
+      setCurrentProyekIndex(
+        nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex
+      );
+      swiperRef.current?.slideTo(
+        nextIndex >= proyekItems.length ? proyekItems.length - 1 : nextIndex
+      );
     }
   };
 
@@ -128,9 +129,11 @@ function ProjectCard() {
     <div className="px-1 mt-8">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <h2 className="text-xl font-semibold text-gray-900">Project</h2>
+          <h2 className="font-nunito font-extrabold text-lg text-gray-900 sm:text-xl">
+            Project
+          </h2>
         </div>
-        <button className="px-4 sm:px-6 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors">
+        <button className="px-4 sm:px-5 py-1.5 sm:py-2 font-nunito font-extrabold bg-primary text-white text-xs sm:text-sm rounded-lg hover:bg-primary-hover transition-colors">
           Lainnya
         </button>
       </div>
@@ -165,17 +168,17 @@ function ProjectCard() {
                 <div className="relative bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_0px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_25px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300">
                   {/* Status and Duration Badge */}
                   <div className="absolute top-2 sm:top-3 left-2 sm:left-3 right-10 sm:right-12 flex justify-between z-10">
-                    <span className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium">
+                    <span className="font-poppins font-medium text-xs text-white tracking-widest bg-neutral/90 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1">
                       {item.status}
                     </span>
-                    <span className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium">
+                    {/* <span className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-poppins font-medium">
                       {item.duration}
-                    </span>
+                    </span> */}
                   </div>
 
                   {/* Menu Button */}
-                  <button className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10 p-1.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-                    <BsThreeDotsVertical className="text-white text-base sm:text-lg" />
+                  <button className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10 px-2 py-1 bg-neutral/90 hover:bg-neutral/70 rounded-md transition-colors">
+                    <BsThreeDots className="text-white text-base sm:text-lg" />
                   </button>
 
                   {/* Image */}
@@ -190,10 +193,10 @@ function ProjectCard() {
                   {/* Content */}
                   <div className="p-3 sm:p-4 flex">
                     <div className="flex-1">
-                      <h3 className="font-medium text-sm sm:text-base text-gray-900 line-clamp-1">
+                      <h3 className="font-poppins font-semibold text-sm sm:text-base text-gray-900 line-clamp-1">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                      <p className="font-poppins text-xs sm:text-sm text-gray-500 mt-1">
                         {item.date}
                       </p>
                     </div>
