@@ -123,7 +123,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#D0D0D0]">
       {/* Navbar */}
       <div className="sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="w-full md:max-w-7xl md:mx-auto md:px-4 md:sm:px-6">
           <Navbar />
         </div>
       </div>
