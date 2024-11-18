@@ -15,7 +15,7 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 z-40 h-screen p-4 bg-white dark:bg-gray-800 transition-transform ${
+        className={`fixed top-0 right-0 z-40 h-screen p-4 bg-white dark:bg-gray-800 transition-transform overflow-y-auto ${
           isOpen === "sidebar" ? "translate-x-0" : "translate-x-full"
         } w-64 md:w-80 2xl:w-96`}
         tabIndex="-1"
@@ -41,8 +41,8 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
           </svg>
         </button>
 
-        <div className="py-4 overflow-y-auto">
-          <div className="flex items-center">
+        <div className="py-8">
+          <div className="flex items-center px-3">
             <img
               src={ProfilePic2}
               alt="Profile"
@@ -54,7 +54,7 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
           </div>
 
           <hr className="my-4 border-gray-300 dark:border-gray-600" />
-          <div className="m-2 px-3 py-3 text-sm md:text-base 2xl:text-lg font-medium text-white bg-black rounded-lg flex items-center justify-between focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700">
+          <div className="m-2 px-3 py-3 text-sm md:text-base 2xl:text-lg font-poppins font-semibold text-white bg-black rounded-lg flex items-center justify-between focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700">
             <span>Upgrade to</span>
             <span className="px-3 py-1 bg-gray-200 text-black rounded-full">
               PRO
@@ -66,103 +66,103 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
           <div className="flex-1 overflow-y-auto px-4 space-y-6">
             <Link
               to="/"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600 group"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 group dark:text-white"
             >
               <img
                 src={icons.HomeIcon}
                 alt="Home"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 group-hover:fill-current group-hover:text-violet-600"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 group-hover:fill-current group-hover:text-violet-600 dark:invert"
               />
               <span>Beranda</span>
             </Link>
 
             <Link
               to="/kelola-konten"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.CalendarIcon}
                 alt="Kelola Konten"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Kelola Konten</span>
             </Link>
 
             <Link
               to="/proyek"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.FileIcon}
                 alt="Proyek"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Proyek</span>
             </Link>
 
             <Link
               to="/ai-tools"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.Streamline}
                 alt="AI Tools"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>AI Tools</span>
             </Link>
 
             <Link
               to="/avatar"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.AvatarIcon}
                 alt="Avatar"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Avatar</span>
             </Link>
 
             <Link
               to="/brand-kit"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.HeroIcon}
                 alt="Brand Kit"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Brand Kit</span>
             </Link>
 
             <Link
               to="/trash"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.TrashIcon}
                 alt="Trash"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Trash</span>
             </Link>
 
             <Link
               to="/pengaturan"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 hover:text-violet-600"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-gray-700 transition-colors hover:text-violet-600 dark:text-white"
             >
               <img
                 src={icons.SettingIcon}
                 alt="Settings"
-                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9"
+                className="mr-2 h-5 w-6 md:h-6 md:w-7 2xl:h-8 2xl:w-9 dark:invert"
               />
               <span>Pengaturan</span>
             </Link>
 
             <Link
               to="/keluar"
-              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-red-600 hover:text-red-700"
+              className="flex items-center text-lg md:text-xl 2xl:text-2xl font-semibold text-red-600 transition-colors hover:text-red-700"
             >
               <img
                 src={icons.LoggoutIcon}
