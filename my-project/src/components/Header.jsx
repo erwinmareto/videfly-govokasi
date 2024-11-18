@@ -13,12 +13,13 @@ import NotificationMenu from "./Menus/NotificationMenu";
 import ProfileMenu from "./Menus/ProfileMenu";
 
 const Header = () => {
-  const [openMenu, setOpenMenu] = useState(null); // Track which menu is open
+  const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menu) => {
     // If the menu clicked is already open, close it; otherwise, open the new menu
     setOpenMenu(openMenu === menu ? null : menu);
   };
+
   return (
     <div className="relative h-[250px] sm:h-[300px]">
       <video
@@ -36,33 +37,39 @@ const Header = () => {
             <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
               Sisa 5 Kredit
             </span>
-            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90">
+            <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90 hover:bg-[length:600%_200%] hover:animate-gradient-flow">
               Upgrade plan
             </button>
           </div>
 
           {/* Notification and Profile */}
-          <div className="hidden absolute right-2 top-1.5 items-center gap-4 p-2 rounded-lg rounded-tl-none rounded-br-none bg-white lg:flex">
-            <button
-              className="flex justify-center items-center bg-accent rounded-full"
-              onClick={() => toggleMenu("notif")}
-            >
-              <img src={Notification} alt="Notification" />
-            </button>
-            <button onClick={() => toggleMenu("profile")}>
-              <img
-                src={ProfilePic1}
-                alt="Profile Picture"
-                className="w-10 h-10 rounded-full"
-              />
-            </button>
+          <div className="hidden absolute right-0 top-0 bg-white pl-2 pb-2 rounded-lg lg:flex">
+            <div className="bg-[#D0D0D0] pl-2 pb-2 rounded-lg rounded-tl-none rounded-br-none">
+              <div className="bg-white flex items-center gap-4 p-2 rounded-lg">
+                <button
+                  className="flex justify-center items-center bg-accent rounded-full"
+                  onClick={() => toggleMenu("notif")}
+                >
+                  <img src={Notification} alt="Notification" />
+                </button>
+                <button onClick={() => toggleMenu("profile")}>
+                  <img
+                    src={ProfilePic1}
+                    alt="Profile Picture"
+                    className="w-10 h-10 rounded-full"
+                  />
+                </button>
 
-            {/* Notifications Menu */}
-            {openMenu === "notif" && (
-              <NotificationMenu toggleMenu={toggleMenu} />
-            )}
+                {/* Notifications Menu */}
+                {openMenu === "notif" && (
+                  <NotificationMenu toggleMenu={toggleMenu} />
+                )}
 
-            {openMenu === "profile" && <ProfileMenu toggleMenu={toggleMenu} />}
+                {openMenu === "profile" && (
+                  <ProfileMenu toggleMenu={toggleMenu} />
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Main Content - Centered */}
@@ -109,53 +116,52 @@ const Header = () => {
             </div>
 
             {/* Feature Buttons */}
-            <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-x-auto hidden md:block">
-              <div className="font-poppins font-semibold bg-gradient-primary rounded-2xl p-2 gap-2 justify-center shadow-lg min-w-max inline-flex">
-                <Link
-                  to="/url-to-video"
-                  className="flex items-center gap-3 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2.5 hover:bg-white/10 rounded-xl full text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Video}
-                    alt="URL to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>URL to Video</span>
-                </Link>
-                <Link
-                  to="/text-to-video"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Text}
-                    alt="Text to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>Text to Video</span>
-                </Link>
-                <Link
-                  to="/speech-to-video"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Speech}
-                    alt="Speech to Video"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>Speech to Video</span>
-                </Link>
-                <Link
-                  to="/ai-avatar"
-                  className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
-                >
-                  <img
-                    src={Avatar}
-                    alt="AI Avatar"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
-                  />
-                  <span>AI Avatar</span>
-                </Link>
-              </div>
+            {/* <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-hidden hidden md:block bg-orange-200"> */}
+            <div className="hidden min-w-max bg-gradient-primary font-poppins font-semibold p-2 justify-center gap-2 rounded-2xl shadow-lg md:inline-flex md:mt-3 lg:mt-6">
+              <Link
+                to="/url-to-video"
+                className="flex items-center gap-3 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2.5 hover:bg-white/10 rounded-xl full text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Video}
+                  alt="URL to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>URL to Video</span>
+              </Link>
+              <Link
+                to="/text-to-video"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Text}
+                  alt="Text to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>Text to Video</span>
+              </Link>
+              <Link
+                to="/speech-to-video"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Speech}
+                  alt="Speech to Video"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>Speech to Video</span>
+              </Link>
+              <Link
+                to="/ai-avatar"
+                className="flex items-center gap-1 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-white/10 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors"
+              >
+                <img
+                  src={Avatar}
+                  alt="AI Avatar"
+                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                />
+                <span>AI Avatar</span>
+              </Link>
             </div>
           </div>
         </div>

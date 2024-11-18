@@ -1,6 +1,6 @@
-import React from "react";
-import icons from "../constant/icons";
 import { Link } from "react-router-dom";
+import icons from "../constant/icons";
+import ProfilePic2 from "../assets/images/profile-pic-2.png";
 
 const DrawerNavigation = ({ isOpen, setIsOpen }) => {
   return (
@@ -8,8 +8,8 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={() => setIsOpen(false)} 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsOpen(false)}
         ></div>
       )}
 
@@ -17,13 +17,13 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
       <div
         className={`fixed top-0 right-0 z-40 h-screen p-4 bg-white dark:bg-gray-800 transition-transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } w-64 md:w-80 2xl:w-96`} 
+        } w-64 md:w-80 2xl:w-96`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >
         <button
           type="button"
-          onClick={() => setIsOpen(false)} 
+          onClick={() => setIsOpen(false)}
           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 left-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
         >
           <svg
@@ -44,7 +44,7 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
         <div className="py-4 overflow-y-auto">
           <div className="flex items-center">
             <img
-              src="https://via.placeholder.com/80" 
+              src={ProfilePic2}
               alt="Profile"
               className="w-12 h-12 md:w-16 md:h-16 2xl:w-20 2xl:h-20 rounded-full object-cover mr-4" // Ukuran lebih besar di 2xl
             />
@@ -56,7 +56,9 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
           <hr className="my-4 border-gray-300 dark:border-gray-600" />
           <div className="m-2 px-3 py-3 text-sm md:text-base 2xl:text-lg font-medium text-white bg-black rounded-lg flex items-center justify-between focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700">
             <span>Upgrade to</span>
-            <span className="px-3 py-1 bg-gray-200 text-black rounded-full">PRO</span>
+            <span className="px-3 py-1 bg-gray-200 text-black rounded-full">
+              PRO
+            </span>
           </div>
           <hr className="my-4 border-gray-300 dark:border-gray-600" />
 

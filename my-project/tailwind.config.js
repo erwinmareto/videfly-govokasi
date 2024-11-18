@@ -83,6 +83,16 @@ export default {
           "linear-gradient(to right, #F27121, #EE593B, #E94057, #AF3E9C, #703BE7)",
         "gradient-primary": "linear-gradient(to right, #703BE7, #3F2181)",
       },
+      keyframes: {
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+      },
+      animation: {
+        "gradient-flow": "gradient 2s ease infinite",
+      },
       screens: {
         wide: "1440px",
       },
