@@ -14,10 +14,10 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-lg rounded-b-lg mb-1">
-      <div className="max-w-7xl mx-auto px-4 sm:px-4">
+      <div className="w-full lg:max-w-7xl lg:mx-auto lg:px-4 lg:sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 ml-4">
             <Link to="/">
               <img
                 src="https://www.videfly.com/new-landing-page-asset/videfly-logo.svg"

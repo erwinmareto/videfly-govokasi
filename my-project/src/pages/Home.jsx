@@ -122,10 +122,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#D0D0D0]">
       {/* Navbar */}
-      <div className="sticky top-0 z-50">
-        <div className="w-full lg:max-w-7xl lg:mx-auto lg:px-4 lg:sm:px-6">
-          <Navbar />
-        </div>
+      <div className="m-2">
+        <Navbar />
       </div>
 
       {/* Hero Section */}
