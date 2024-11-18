@@ -52,7 +52,7 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => toggleMenu("sidebar")}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 focus:outline-none"
             >
               <svg
@@ -161,7 +161,7 @@ export default function Navbar() {
           </div>
         </div>
         {/* Menu Mobile */}
-        <DrawerNavigation isOpen={isOpen} setIsOpen={setIsOpen} />
+        <DrawerNavigation isOpen={activeMenu} setIsOpen={toggleMenu} />
 
         {/* Notification Menu */}
         {activeMenu === "notification" && (

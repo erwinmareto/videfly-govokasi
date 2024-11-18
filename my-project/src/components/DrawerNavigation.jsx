@@ -6,7 +6,7 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
   return (
     <div>
       {/* Overlay */}
-      {isOpen && (
+      {isOpen === "sidebar" && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setIsOpen(false)}
@@ -16,7 +16,7 @@ const DrawerNavigation = ({ isOpen, setIsOpen }) => {
       {/* Drawer */}
       <div
         className={`fixed top-0 right-0 z-40 h-screen p-4 bg-white dark:bg-gray-800 transition-transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+          isOpen === "sidebar" ? "translate-x-0" : "translate-x-full"
         } w-64 md:w-80 2xl:w-96`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
