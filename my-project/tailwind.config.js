@@ -72,6 +72,8 @@ export default {
         error: "#FE846F",
         "error-hover": "#D96B57",
         "error-content": "#FFD9D2",
+
+        alert: "#E94057",
       },
       boxShadow: {
         "3xl": "0 10px 40px rgba(0, 0, 0, 0.1)",
