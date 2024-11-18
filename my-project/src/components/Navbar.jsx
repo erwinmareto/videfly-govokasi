@@ -27,8 +27,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button & Notification */}
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile & Tablet Menu Button & Notification */}
+          <div className="lg:hidden flex items-center gap-4">
             <button
               onClick={() => toggleMenu('notification')}
               className="relative p-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-white focus:outline-none"
@@ -79,7 +79,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-10 mr-2">
+          <div className="hidden lg:flex space-x-10 mr-2">
             <Link
               to="/"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600 group"
@@ -152,11 +152,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile & Tablet Menu */}
         <div
           className={`${
             isOpen ? "block" : "hidden"
-          } md:hidden fixed right-0 top-0 h-full w-[50%] bg-white z-50 shadow-xl`}
+          } lg:hidden fixed right-0 top-0 h-full w-[50%] bg-white z-50 shadow-xl`}
         >
           <div className="px-4 py-6">
             <div className="flex items-center justify-between mb-8">
