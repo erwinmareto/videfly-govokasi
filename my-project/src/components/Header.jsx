@@ -52,7 +52,7 @@ const Header = () => {
 
           {/* Notification and Profile */}
           <div className="absolute top-0 right-0 hidden pb-2 pl-2 bg-white rounded-lg lg:flex">
-            <div className="pb-2 pl-2 bg-[#D0D0D0]  rounded-lg rounded-br-none">
+            <div className="pb-2 pl-2 bg-[#D0D0D0]  rounded-lg rounded-br-none rounded-tl-none">
               <div className="flex items-center gap-4 p-2 bg-white rounded-lg">
                 <button
                   className="flex items-center justify-center rounded-full bg-accent"
@@ -61,7 +61,7 @@ const Header = () => {
                   <img src={Notification} alt="Notification" />
                 </button>
 
-                <button onClick={openProfilemenu}>
+                <button onClick={() => toggleMenu("profile")}>
                   <img
                     src={ProfilePic1}
                     alt="Profile Picture"
@@ -73,10 +73,7 @@ const Header = () => {
 
                 <NotificationMenu isOpen={openMenu} toggleMenu={toggleMenu} />
 
-                <ProfileMenu
-                  toggleMenu={openProfilemenu}
-                  isOpen={openProfile}
-                />
+                <ProfileMenu isOpen={openMenu} />
               </div>
             </div>
           </div>

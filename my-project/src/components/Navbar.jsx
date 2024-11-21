@@ -5,20 +5,14 @@ import DrawerNavigation from "./DrawerNavigation";
 import NotificationMenu from "./Menus/NotificationMenu";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  const [notifeMenu, setnotifeMenu] = useState(false);
 
   const toggleMenu = (menuName) => {
     setActiveMenu(activeMenu === menuName ? null : menuName);
   };
 
-  const notificationMenu = () => {
-    setnotifeMenu(!notifeMenu);
-  };
-
   return (
-    <nav className="px-2 my-5 mb-1 bg-white rounded-b-lg shadow-lg">
+    <nav className="px-2 mb-1 bg-white rounded-b-lg shadow-lg">
       <div className="w-full lg:max-w-7xl lg:mx-auto sm:px-6 lg:px-4 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -34,7 +28,7 @@ export default function Navbar() {
           {/* Mobile & Tablet Menu Button & Notification */}
           <div className="flex items-center gap-4 lg:hidden">
             <button
-              onClick={notificationMenu}
+              onClick={() => toggleMenu("notif")}
               className="relative p-2 text-white bg-black rounded-full hover:bg-gray-800 hover:text-white focus:outline-none"
             >
               <svg
@@ -71,21 +65,12 @@ export default function Navbar() {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  {isOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </svg>
             </button>
@@ -168,7 +153,7 @@ export default function Navbar() {
         <DrawerNavigation isOpen={activeMenu} setIsOpen={toggleMenu} />
 
         {/* Notification Menu */}
-        <NotificationMenu toggleMenu={notificationMenu} isOpen={notifeMenu} />
+        <NotificationMenu toggleMenu={toggleMenu} isOpen={activeMenu} />
       </div>
     </nav>
   );

@@ -1,11 +1,11 @@
 import Settings from "../../assets/icons/settings-02.svg";
 import Logout from "../../assets/icons/logout-03.svg";
 
-const ProfileMenu = ({ toggleMenu, isOpen }) => {
+const ProfileMenu = ({ isOpen }) => {
   return (
     <div
       className={`absolute right-4 top-16 z-50 w-[11rem] font-poppins flex flex-col bg-neutral px-6 py-4 rounded-2xl transition-all ease-in-out duration-300 ${
-        isOpen ? "visible opacity-100" : "invisible opacity-0"
+        isOpen === "profile" ? "visible opacity-100" : "invisible opacity-0"
       }`}
     >
       <div className="flex flex-col font-poppins">

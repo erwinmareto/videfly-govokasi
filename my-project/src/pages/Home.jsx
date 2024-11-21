@@ -121,20 +121,20 @@ export default function Home() {
   };
 
   return (
-    <div className=" bg-[#D0D0D0]">
+    <div className="min-h-screen bg-[#D0D0D0]">
       {/* Navbar */}
-      <div className="m-2">
+      <div className="mx-2">
         <Navbar />
       </div>
 
       {/* Hero Section */}
-      <div className="m-2 bg-white rounded-lg">
+      <div className="bg-white m-2 rounded-lg">
         <Header />
 
-        <section className="relative z-30 flex items-start justify-center gap-4 px-8 py-4 font-semibold font-poppins md:hidden">
+        <section className="relative z-30 flex justify-center items-start font-poppins font-semibold gap-4 px-8 py-4 md:hidden">
           <Link to="/add-video">
-            <div className="flex flex-col items-center justify-center gap-1">
-              <button className="flex items-center justify-center w-12 h-12 p-2 rounded-full bg-gradient-primary">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
                 <img
                   src={HalfAdd}
                   alt="Add Video"
@@ -145,8 +145,8 @@ export default function Home() {
             </div>
           </Link>
           <Link to="/url-to-video">
-            <div className="flex flex-col items-center justify-center gap-1">
-              <button className="flex items-center justify-center w-12 h-12 p-2 rounded-full bg-gradient-primary">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
                 <img
                   src={Video}
                   alt="URL to Video"
@@ -157,8 +157,8 @@ export default function Home() {
             </div>
           </Link>
           <Link to="/text-to-video">
-            <div className="flex flex-col items-center justify-center gap-1">
-              <button className="flex items-center justify-center w-12 h-12 p-2 rounded-full bg-gradient-primary">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
                 <img
                   src={Text}
                   alt="Text to Video"
@@ -169,8 +169,8 @@ export default function Home() {
             </div>
           </Link>
           <Link to="/speech-to-video">
-            <div className="flex flex-col items-center justify-center gap-1">
-              <button className="flex items-center justify-center w-12 h-12 p-2 rounded-full bg-gradient-primary">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
                 <img
                   src={Speech}
                   alt="Speech to Video"
@@ -181,8 +181,8 @@ export default function Home() {
             </div>
           </Link>
           <Link to="/AI-avatar">
-            <div className="flex flex-col items-center justify-center gap-1">
-              <button className="flex items-center justify-center w-12 h-12 p-2 rounded-full bg-gradient-primary">
+            <div className="flex flex-col justify-center items-center gap-1">
+              <button className="flex items-center justify-center bg-gradient-primary p-2 rounded-full w-12 h-12">
                 <img
                   src={Avatar}
                   alt="AI Avatar"
@@ -195,11 +195,11 @@ export default function Home() {
         </section>
 
         {/* Content Section */}
-        <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           {/* Kelola Konten Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <h2 className="text-lg font-extrabold text-gray-900 sm:text-xl font-nunito">
+              <h2 className="text-lg sm:text-xl font-nunito font-extrabold text-gray-900">
                 Kelola Konten
               </h2>
             </div>
@@ -237,19 +237,19 @@ export default function Home() {
                       style={{ width: "auto", cursor: "grab" }}
                     >
                       <div className="min-w-[300px] sm:min-w-[400px]">
-                        <h3 className="mb-4 font-semibold text-gray-500 font-poppins text-body-xl sm:text-base">
+                        <h3 className="font-poppins font-semibold text-body-xl sm:text-base text-gray-500 mb-4">
                           {section.title}
                         </h3>
                         <div className="space-y-3">
                           {section.items.map((item, itemIndex) => (
                             <div
                               key={itemIndex}
-                              className="relative bg-white border border-gray-200 rounded-2xl"
+                              className="relative bg-white rounded-2xl border border-gray-200"
                             >
                               <div className="p-4">
-                                <div className="flex items-start justify-between font-poppins">
+                                <div className="font-poppins flex justify-between items-start">
                                   <div className="space-y-2">
-                                    <h3 className="text-sm font-semibold text-gray-900">
+                                    <h3 className="font-semibold text-sm text-gray-900">
                                       {item.title}
                                     </h3>
                                     <span

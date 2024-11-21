@@ -11,7 +11,7 @@ const NotificationMenu = ({ toggleMenu, isOpen }) => {
   return (
     <div
       className={`absolute md:right-2 right-1/2 md:translate-x-0 translate-x-1/2 md:top-16 top-20 z-50 w-[21.75rem] font-poppins flex flex-col ${
-        isOpen ? "visible opacity-100" : "invisible opacity-0"
+        isOpen === "notif" ? "visible opacity-100" : "invisible opacity-0"
       } transition-all ease-in-out duration-300 bg-neutral rounded-2xl md:w-[28rem] md:right-14 md:top-16`}
     >
       <div className="flex items-center justify-between p-3 border-b-2 border-neutral-content md:px-6 md:py-4">
