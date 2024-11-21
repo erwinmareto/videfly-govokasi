@@ -14,27 +14,35 @@ import ProfileMenu from "./Menus/ProfileMenu";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(null);
+  const [openProfile, setopenProfile] = useState(false);
 
   const toggleMenu = (menu) => {
     // If the menu clicked is already open, close it; otherwise, open the new menu
     setOpenMenu(openMenu === menu ? null : menu);
   };
 
+  const openProfilemenu = () => {
+    setopenProfile(!openProfile);
+  };
+
   return (
     <div className="relative h-[250px] sm:h-[300px]">
-      <video
-        className="absolute top-0 left-0 w-full h-full object-fill px-2 py-1.5 rounded-2xl z-10"
-        src={headerVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+      <div className="vidio-wrap">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover px-2 py-1.5 rounded-2xl z-10"
+          src={headerVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
+
       <div className="absolute inset-0 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full">
+        <div className="h-full px-4 mx-auto max-w-7xl sm:px-6">
           {/* Header */}
-          <div className="hidden justify-end items-center gap-2 py-4 sm:gap-4 md:flex lg:mr-24">
-            <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
+          <div className="items-center justify-end hidden gap-2 py-4 sm:gap-4 md:flex lg:mr-24">
+            <span className="text-xs font-semibold text-white font-poppins loop-border sm:text-sm">
               Sisa 5 Kredit
             </span>
             <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-xl transition-transform sm:text-sm sm:px-4 hover:scale-105 active:scale-90 hover:bg-[length:600%_200%] hover:animate-gradient-flow">
@@ -43,15 +51,16 @@ const Header = () => {
           </div>
 
           {/* Notification and Profile */}
-          <div className="hidden absolute right-0 top-0 bg-white pl-2 pb-2 rounded-lg lg:flex">
-            <div className="bg-[#D0D0D0] pl-2 pb-2 rounded-lg rounded-tl-none rounded-br-none">
-              <div className="bg-white flex items-center gap-4 p-2 rounded-lg">
+          <div className="absolute top-0 right-0 hidden pb-2 pl-2 bg-white rounded-lg lg:flex">
+            <div className="pb-2 pl-2 bg-[#D0D0D0]  rounded-lg rounded-br-none rounded-tl-none">
+              <div className="flex items-center gap-4 p-2 bg-white rounded-lg">
                 <button
-                  className="flex justify-center items-center bg-accent rounded-full"
+                  className="flex items-center justify-center rounded-full bg-accent"
                   onClick={() => toggleMenu("notif")}
                 >
                   <img src={Notification} alt="Notification" />
                 </button>
+
                 <button onClick={() => toggleMenu("profile")}>
                   <img
                     src={ProfilePic1}
@@ -61,37 +70,34 @@ const Header = () => {
                 </button>
 
                 {/* Notifications Menu */}
-                {openMenu === "notif" && (
-                  <NotificationMenu toggleMenu={toggleMenu} />
-                )}
 
-                {openMenu === "profile" && (
-                  <ProfileMenu toggleMenu={toggleMenu} />
-                )}
+                <NotificationMenu isOpen={openMenu} toggleMenu={toggleMenu} />
+
+                <ProfileMenu isOpen={openMenu} />
               </div>
             </div>
           </div>
 
           {/* Main Content - Centered */}
           <div className="flex flex-col items-center mt-24 md:mt-10 sm:mt-16 max-sm:gap-4">
-            <h1 className="font-nunito font-extrabold text-xl sm:text-4xl text-white mb-6 sm:mb-8 text-center px-4">
+            <h1 className="px-4 mb-6 text-xl font-extrabold text-center text-white font-nunito sm:text-4xl sm:mb-8">
               Mulai kreasi baru hari ini!
             </h1>
 
             {/* Tablet Button */}
             <button className="bg-primary text-white px-4 py-2 rounded-xl items-center gap-2 transition-colors hidden md:mb-10 md:flex lg:hidden sm:px-6 sm:py-1.5 hover:bg-primary-hover">
-              <span className="font-poppins font-semibold text-sm sm:text-base">
+              <span className="text-sm font-semibold font-poppins sm:text-base">
                 Buat Video
               </span>
               <img
                 src={HalfAdd}
                 alt="Add"
-                className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
               />
             </button>
 
             <div className="flex justify-center items-center gap-2.5 md:hidden">
-              <span className="font-poppins font-semibold text-white text-xs loop-border sm:text-sm">
+              <span className="text-xs font-semibold text-white font-poppins loop-border sm:text-sm">
                 Sisa 5 Kredit
               </span>
               <button className="font-poppins font-semibold bg-gradient-upgrade-btn text-white text-xs px-3 py-1.5 rounded-lg transition-transform active:scale-90 hover:scale-105 sm:text-sm sm:px-4">
@@ -100,24 +106,24 @@ const Header = () => {
             </div>
 
             {/* Buat Video Button */}
-            <div className="hidden justify-start w-full gap-2 mt-4 sm:mt-7 px-2 lg:flex">
+            <div className="justify-start hidden w-full gap-2 px-2 mt-4 sm:mt-7 lg:flex">
               <Link to="/url-to-video">
                 <button className="bg-primary hover:bg-primary-hover text-white px-4 sm:px-6 py-2 sm:py-1.5 rounded-xl flex items-center gap-2 transition-colors">
-                  <span className="font-poppins font-semibold text-sm sm:text-base">
+                  <span className="text-sm font-semibold font-poppins sm:text-base">
                     Buat Video
                   </span>
                   <img
                     src={HalfAdd}
                     alt="Add"
-                    className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                    className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
                   />
                 </button>
               </Link>
             </div>
 
             {/* Feature Buttons */}
-            {/* <div className="max-w-3xl mx-auto mt-3 px-20 w-full overflow-hidden hidden md:block bg-orange-200"> */}
-            <div className="hidden min-w-max bg-gradient-primary font-poppins font-semibold p-2 justify-center gap-2 rounded-2xl shadow-lg md:inline-flex md:mt-3 lg:mt-6">
+            {/* <div className="hidden w-full max-w-3xl px-20 mx-auto mt-3 overflow-hidden bg-orange-200 md:block"> */}
+            <div className="justify-center hidden gap-2 p-2 font-semibold shadow-lg min-w-max bg-gradient-primary font-poppins rounded-2xl md:inline-flex md:mt-3 lg:mt-6">
               <Link
                 to="/url-to-video"
                 className="flex items-center gap-3 sm:gap-2 text-white px-3 sm:px-4 py-1.5 sm:py-2.5 hover:bg-white/10 rounded-xl full text-xs sm:text-sm whitespace-nowrap transition-colors"
@@ -125,7 +131,7 @@ const Header = () => {
                 <img
                   src={Video}
                   alt="URL to Video"
-                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                  className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
                 />
                 <span>URL to Video</span>
               </Link>
@@ -136,7 +142,7 @@ const Header = () => {
                 <img
                   src={Text}
                   alt="Text to Video"
-                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                  className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
                 />
                 <span>Text to Video</span>
               </Link>
@@ -147,7 +153,7 @@ const Header = () => {
                 <img
                   src={Speech}
                   alt="Speech to Video"
-                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                  className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
                 />
                 <span>Speech to Video</span>
               </Link>
@@ -158,7 +164,7 @@ const Header = () => {
                 <img
                   src={Avatar}
                   alt="AI Avatar"
-                  className="w-4 sm:w-5 h-4 sm:h-5 filter invert"
+                  className="w-4 h-4 sm:w-5 sm:h-5 filter invert"
                 />
                 <span>AI Avatar</span>
               </Link>

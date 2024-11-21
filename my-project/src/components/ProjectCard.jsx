@@ -129,7 +129,7 @@ function ProjectCard() {
     <div className="px-1 mt-8">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <h2 className="font-nunito font-extrabold text-lg text-gray-900 sm:text-xl">
+          <h2 className="text-lg font-extrabold text-gray-900 font-nunito sm:text-xl">
             Project
           </h2>
         </div>
@@ -167,36 +167,36 @@ function ProjectCard() {
               <SwiperSlide key={index}>
                 <div className="relative bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_0px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_25px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300">
                   {/* Status and Duration Badge */}
-                  <div className="absolute top-2 sm:top-3 left-2 sm:left-3 right-10 sm:right-12 flex justify-between z-10">
-                    <span className="font-poppins font-medium text-xs text-white tracking-widest bg-neutral/90 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1">
+                  <div className="absolute z-10 flex justify-between top-2 sm:top-3 left-2 sm:left-3 right-10 sm:right-12">
+                    <span className="px-2 py-1 text-xs font-medium tracking-widest text-white rounded-full font-poppins bg-neutral/90 backdrop-blur-sm sm:px-3">
                       {item.status}
                     </span>
-                    {/* <span className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-poppins font-medium">
+                    {/* <span className="px-2 py-1 text-xs font-medium rounded-full sm:px-3 bg-white/90 backdrop-blur-sm font-poppins">
                       {item.duration}
                     </span> */}
                   </div>
 
                   {/* Menu Button */}
-                  <button className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10 px-2 py-1 bg-neutral/90 hover:bg-neutral/70 rounded-md transition-colors">
-                    <BsThreeDots className="text-white text-base sm:text-lg" />
+                  <button className="absolute z-10 px-2 py-1 transition-colors rounded-md top-2 sm:top-3 right-2 sm:right-3 bg-neutral/90 hover:bg-neutral/70">
+                    <BsThreeDots className="text-base text-white sm:text-lg" />
                   </button>
 
                   {/* Image */}
-                  <div className="aspect-video w-full bg-gray-100">
+                  <div className="w-full bg-gray-100 aspect-video">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="object-cover w-full h-full"
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="p-3 sm:p-4 flex">
+                  <div className="flex p-3 sm:p-4">
                     <div className="flex-1">
-                      <h3 className="font-poppins font-semibold text-sm sm:text-base text-gray-900 line-clamp-1">
+                      <h3 className="text-sm font-semibold text-gray-900 font-poppins sm:text-base line-clamp-1">
                         {item.title}
                       </h3>
-                      <p className="font-poppins text-xs sm:text-sm text-gray-500 mt-1">
+                      <p className="mt-1 text-xs text-gray-500 font-poppins sm:text-sm">
                         {item.date}
                       </p>
                     </div>

@@ -5,7 +5,6 @@ import DrawerNavigation from "./DrawerNavigation";
 import NotificationMenu from "./Menus/NotificationMenu";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menuName) => {
@@ -13,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-lg rounded-b-lg mb-1 px-2">
+    <nav className="px-2 mb-1 bg-white rounded-b-lg shadow-lg">
       <div className="w-full lg:max-w-7xl lg:mx-auto sm:px-6 lg:px-4 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -26,15 +25,14 @@ export default function Navbar() {
               />
             </Link>
           </div>
-
           {/* Mobile & Tablet Menu Button & Notification */}
-          <div className="lg:hidden flex items-center gap-4">
+          <div className="flex items-center gap-4 lg:hidden">
             <button
-              onClick={() => toggleMenu("notification")}
-              className="relative p-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-white focus:outline-none"
+              onClick={() => toggleMenu("notif")}
+              className="relative p-2 text-white bg-black rounded-full hover:bg-gray-800 hover:text-white focus:outline-none"
             >
               <svg
-                className="h-6 w-6"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -53,42 +51,33 @@ export default function Navbar() {
 
             <button
               onClick={() => toggleMenu("sidebar")}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 text-gray-700 rounded-md hover:text-black hover:bg-gray-100 focus:outline-none"
             >
               <svg
-                className="h-6 w-6"
+                className="w-6 h-6"
                 stroke="currentColor"
                 fill="none"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  {isOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </svg>
             </button>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-10 mr-2">
+          <div className="hidden mr-2 space-x-10 lg:flex">
             <Link
               to="/"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600 group"
@@ -96,7 +85,7 @@ export default function Navbar() {
               <img
                 src={icons.HomeIcon}
                 alt="Home"
-                className="mr-2 h-5 w-6 group-hover:fill-current group-hover:text-violet-600"
+                className="w-6 h-5 mr-2 group-hover:fill-current group-hover:text-violet-600"
               />
               <span>Beranda</span>
             </Link>
@@ -107,7 +96,7 @@ export default function Navbar() {
               <img
                 src={icons.CalendarIcon}
                 alt="Kelola Konten"
-                className="mr-2 h-5 w-6"
+                className="w-6 h-5 mr-2"
               />
               <span>Kelola Konten</span>
             </Link>
@@ -115,7 +104,7 @@ export default function Navbar() {
               to="/proyek"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={icons.FileIcon} alt="Proyek" className="mr-2 h-5 w-6" />
+              <img src={icons.FileIcon} alt="Proyek" className="w-6 h-5 mr-2" />
               <span>Proyek</span>
             </Link>
             <Link
@@ -125,7 +114,7 @@ export default function Navbar() {
               <img
                 src={icons.Streamline}
                 alt="AI Tools"
-                className="mr-2 h-5 w-6"
+                className="w-6 h-5 mr-2"
               />
               <span>AI Tools</span>
             </Link>
@@ -136,7 +125,7 @@ export default function Navbar() {
               <img
                 src={icons.AvatarIcon}
                 alt="Avatar"
-                className="mr-2 h-5 w-6"
+                className="w-6 h-5 mr-2"
               />
               <span>Avatar</span>
             </Link>
@@ -147,7 +136,7 @@ export default function Navbar() {
               <img
                 src={icons.HeroIcon}
                 alt="Brand Kit"
-                className="mr-2 h-5 w-6"
+                className="w-6 h-5 mr-2"
               />
               <span>Brand Kit</span>
             </Link>
@@ -155,7 +144,7 @@ export default function Navbar() {
               to="/trash"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={icons.TrashIcon} alt="Trash" className="mr-2 h-5 w-6" />
+              <img src={icons.TrashIcon} alt="Trash" className="w-6 h-5 mr-2" />
               <span>Trash</span>
             </Link>
           </div>
@@ -164,9 +153,7 @@ export default function Navbar() {
         <DrawerNavigation isOpen={activeMenu} setIsOpen={toggleMenu} />
 
         {/* Notification Menu */}
-        {activeMenu === "notification" && (
-          <NotificationMenu toggleMenu={toggleMenu} />
-        )}
+        <NotificationMenu toggleMenu={toggleMenu} isOpen={activeMenu} />
       </div>
     </nav>
   );

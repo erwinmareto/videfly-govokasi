@@ -12,7 +12,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <div className="w-64 h-screen bg-white shadow-lg flex flex-col">
+    <div className="flex flex-col w-64 h-screen bg-white shadow-lg">
       <div className="p-4">
         <img
           src="https://www.videfly.com/new-landing-page-asset/videfly-logo.svg"
@@ -21,19 +21,19 @@ export default function Sidebar() {
         />
       </div>
 
-      <div className="mt-4 flex flex-col flex-1">
+      <div className="flex flex-col flex-1 mt-4">
         <Link
           to="/buat-video"
-          className="flex items-center gap-2 px-4 py-3 bg-purple-600 text-white mx-4 rounded-lg"
+          className="flex items-center gap-2 px-4 py-3 mx-4 text-white bg-purple-600 rounded-lg"
         >
           <FaVideo className="text-xl" />
           <span>Buat Video</span>
         </Link>
 
-        <nav className="mt-6 flex flex-col">
+        <nav className="flex flex-col mt-6">
           <Link
             to="/"
-            className="btn btn-primary flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-purple-50"
+            className="flex items-center gap-3 px-4 py-3 text-gray-700 btn btn-primary hover:bg-purple-50"
           >
             <FaHome className="text-xl" />
             <span>Beranda</span>
@@ -91,7 +91,7 @@ export default function Sidebar() {
 
           <Link
             to="/logout"
-            className="btn btn-error flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50"
+            className="flex items-center gap-3 px-4 py-3 text-red-600 btn btn-error hover:bg-red-50"
           >
             <FaSignOutAlt className="text-xl" />
             <span>Keluar</span>
