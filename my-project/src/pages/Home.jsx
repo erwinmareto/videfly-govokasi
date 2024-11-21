@@ -121,7 +121,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#D0D0D0]">
+    <div className=" bg-[#D0D0D0]">
       {/* Navbar */}
       <div className="m-2">
         <Navbar />

@@ -7,13 +7,18 @@ import NotificationMenu from "./Menus/NotificationMenu";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  const [notifeMenu, setnotifeMenu] = useState(false);
 
   const toggleMenu = (menuName) => {
     setActiveMenu(activeMenu === menuName ? null : menuName);
   };
 
+  const notificationMenu = () => {
+    setnotifeMenu(!notifeMenu);
+  };
+
   return (
-    <nav className="px-2 mb-1 bg-white rounded-b-lg shadow-lg">
+    <nav className="px-2 my-5 mb-1 bg-white rounded-b-lg shadow-lg">
       <div className="w-full lg:max-w-7xl lg:mx-auto sm:px-6 lg:px-4 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -26,11 +31,10 @@ export default function Navbar() {
               />
             </Link>
           </div>
-
           {/* Mobile & Tablet Menu Button & Notification */}
           <div className="flex items-center gap-4 lg:hidden">
             <button
-              onClick={() => toggleMenu("notification")}
+              onClick={notificationMenu}
               className="relative p-2 text-white bg-black rounded-full hover:bg-gray-800 hover:text-white focus:outline-none"
             >
               <svg
@@ -164,9 +168,7 @@ export default function Navbar() {
         <DrawerNavigation isOpen={activeMenu} setIsOpen={toggleMenu} />
 
         {/* Notification Menu */}
-        {activeMenu === "notification" && (
-          <NotificationMenu toggleMenu={toggleMenu} />
-        )}
+        <NotificationMenu toggleMenu={notificationMenu} isOpen={notifeMenu} />
       </div>
     </nav>
   );

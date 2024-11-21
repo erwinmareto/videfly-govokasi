@@ -14,22 +14,30 @@ import ProfileMenu from "./Menus/ProfileMenu";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(null);
+  const [openProfile, setopenProfile] = useState(false);
 
   const toggleMenu = (menu) => {
     // If the menu clicked is already open, close it; otherwise, open the new menu
     setOpenMenu(openMenu === menu ? null : menu);
   };
 
+  const openProfilemenu = () => {
+    setopenProfile(!openProfile);
+  };
+
   return (
     <div className="relative h-[250px] sm:h-[300px]">
-      <video
-        className="absolute top-0 left-0 w-full h-full object-fill px-2 py-1.5 rounded-2xl z-10"
-        src={headerVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+      <div className="vidio-wrap">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover px-2 py-1.5 rounded-2xl z-10"
+          src={headerVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
+
       <div className="absolute inset-0 z-30">
         <div className="h-full px-4 mx-auto max-w-7xl sm:px-6">
           {/* Header */}
@@ -44,7 +52,7 @@ const Header = () => {
 
           {/* Notification and Profile */}
           <div className="absolute top-0 right-0 hidden pb-2 pl-2 bg-white rounded-lg lg:flex">
-            <div className="bg-[#D0D0D0] pl-2 pb-2 rounded-lg rounded-tl-none rounded-br-none">
+            <div className="pb-2 pl-2 bg-[#D0D0D0]  rounded-lg rounded-br-none">
               <div className="flex items-center gap-4 p-2 bg-white rounded-lg">
                 <button
                   className="flex items-center justify-center rounded-full bg-accent"
@@ -52,7 +60,8 @@ const Header = () => {
                 >
                   <img src={Notification} alt="Notification" />
                 </button>
-                <button onClick={() => toggleMenu("profile")}>
+
+                <button onClick={openProfilemenu}>
                   <img
                     src={ProfilePic1}
                     alt="Profile Picture"
@@ -61,13 +70,13 @@ const Header = () => {
                 </button>
 
                 {/* Notifications Menu */}
-                {openMenu === "notif" && (
-                  <NotificationMenu toggleMenu={toggleMenu} />
-                )}
 
-                {openMenu === "profile" && (
-                  <ProfileMenu toggleMenu={toggleMenu} />
-                )}
+                <NotificationMenu isOpen={openMenu} toggleMenu={toggleMenu} />
+
+                <ProfileMenu
+                  toggleMenu={openProfilemenu}
+                  isOpen={openProfile}
+                />
               </div>
             </div>
           </div>
