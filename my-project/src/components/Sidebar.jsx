@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import {
   FaHome,
@@ -34,7 +33,7 @@ export default function Sidebar() {
         <nav className="flex flex-col mt-6">
           <Link
             to="/"
-            className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-purple-50"
+            className="flex items-center gap-3 px-4 py-3 text-gray-700 btn btn-primary hover:bg-purple-50"
           >
             <FaHome className="text-xl" />
             <span>Beranda</span>
@@ -92,7 +91,7 @@ export default function Sidebar() {
 
           <Link
             to="/logout"
-            className="flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50"
+            className="flex items-center gap-3 px-4 py-3 text-red-600 btn btn-error hover:bg-red-50"
           >
             <FaSignOutAlt className="text-xl" />
             <span>Keluar</span>

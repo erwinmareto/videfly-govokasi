@@ -1,22 +1,23 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from "../assets/icons/home-03.svg";
-import Streamline from "../assets/icons/streamline_ai-edit-spark.svg";
-import HeroIcon from "../assets/icons/heroicons-outline_color-swatch.svg";
-import AvatarIcon from "../assets/icons/user-star-02.svg";
-import CalendarIcon from "../assets/icons/calendar-03.svg";
-import FileIcon from "../assets/icons/solar_library-linear.svg";
-import TrashIcon from "../assets/icons/delete-02.svg";
+import icons from "../constant/icons";
+import DrawerNavigation from "./DrawerNavigation";
+import NotificationMenu from "./Menus/NotificationMenu";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+
+  const toggleMenu = (menuName) => {
+    setActiveMenu(activeMenu === menuName ? null : menuName);
+  };
 
   return (
-    <nav className="mb-1 bg-white rounded-b-lg shadow-lg">
-      <div className="px-4 mx-auto max-w-7xl">
+    <nav className="px-2 mb-1 bg-white rounded-b-lg shadow-lg">
+      <div className="w-full lg:max-w-7xl lg:mx-auto sm:px-6 lg:px-4 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 ml-4">
             <Link to="/">
               <img
                 src="https://www.videfly.com/new-landing-page-asset/videfly-logo.svg"
@@ -26,11 +27,33 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile */}
-          <div className="md:hidden">
+          {/* Mobile & Tablet Menu Button & Notification */}
+          <div className="flex items-center gap-4 lg:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100 focus:outline-none"
+              onClick={() => toggleMenu("notification")}
+              className="relative p-2 text-white bg-black rounded-full hover:bg-gray-800 hover:text-white focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+              <span className="absolute top-1 right-1 inline-flex items-center justify-center px-2 py-1.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-alert rounded-full">
+                3
+              </span>
+            </button>
+
+            <button
+              onClick={() => toggleMenu("sidebar")}
+              className="inline-flex items-center justify-center p-2 text-gray-700 rounded-md hover:text-black hover:bg-gray-100 focus:outline-none"
             >
               <svg
                 className="w-6 h-6"
@@ -38,33 +61,40 @@ export default function Navbar() {
                 fill="none"
                 viewBox="0 0 24 24"
               >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
+                <svg
+                  className="w-6 h-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  {isOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
               </svg>
             </button>
           </div>
 
-          {/* Navigation Links untuk Desktop */}
-          <div className="hidden mr-6 space-x-10 md:flex">
+          {/* Desktop Navigation */}
+          <div className="hidden mr-2 space-x-10 lg:flex">
             <Link
               to="/"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600 group"
             >
               <img
-                src={HomeIcon}
+                src={icons.HomeIcon}
                 alt="Home"
                 className="w-6 h-5 mr-2 group-hover:fill-current group-hover:text-violet-600"
               />
@@ -75,7 +105,7 @@ export default function Navbar() {
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
               <img
-                src={CalendarIcon}
+                src={icons.CalendarIcon}
                 alt="Kelola Konten"
                 className="w-6 h-5 mr-2"
               />
@@ -85,98 +115,58 @@ export default function Navbar() {
               to="/proyek"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={FileIcon} alt="Proyek" className="w-6 h-5 mr-2" />
+              <img src={icons.FileIcon} alt="Proyek" className="w-6 h-5 mr-2" />
               <span>Proyek</span>
             </Link>
             <Link
               to="/ai-tools"
               className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
-            >
-              <img src={Streamline} alt="AI Tools" className="w-6 h-5 mr-2" />
-              <span>AI Tools</span>
-            </Link>
-            <Link
-              to="/avatar"
-              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
-            >
-              <img src={AvatarIcon} alt="Avatar" className="w-6 h-5 mr-2" />
-              <span>Avatar</span>
-            </Link>
-            <Link
-              to="/brand-kit"
-              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
-            >
-              <img src={HeroIcon} alt="Brand Kit" className="w-6 h-5 mr-2" />
-              <span>Brand Kit</span>
-            </Link>
-            <Link
-              to="/brand-kit"
-              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
-            >
-              <img src={TrashIcon} alt="Trash" className="w-6 h-5 mr-2" />
-              <span>Trash</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Menu Mobile */}
-        <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link
-              to="/"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
-            >
-              <img src={HomeIcon} alt="Home" className="w-6 h-5 mr-2" />
-              <span>Beranda</span>
-            </Link>
-            <Link
-              to="/kelola-konten"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
             >
               <img
-                src={CalendarIcon}
-                alt="Kelola Konten"
+                src={icons.Streamline}
+                alt="AI Tools"
                 className="w-6 h-5 mr-2"
               />
-              <span>Kelola Konten</span>
-            </Link>
-            <Link
-              to="/proyek"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
-            >
-              <img src={FileIcon} alt="Proyek" className="w-6 h-5 mr-2" />
-              <span>Proyek</span>
-            </Link>
-            <Link
-              to="/ai-tools"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
-            >
-              <img src={Streamline} alt="AI Tools" className="w-6 h-5 mr-2" />
               <span>AI Tools</span>
             </Link>
             <Link
               to="/avatar"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
+              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={AvatarIcon} alt="Avatar" className="w-6 h-5 mr-2" />
+              <img
+                src={icons.AvatarIcon}
+                alt="Avatar"
+                className="w-6 h-5 mr-2"
+              />
               <span>Avatar</span>
             </Link>
             <Link
               to="/brand-kit"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
+              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={HeroIcon} alt="Brand Kit" className="w-6 h-5 mr-2" />
+              <img
+                src={icons.HeroIcon}
+                alt="Brand Kit"
+                className="w-6 h-5 mr-2"
+              />
               <span>Brand Kit</span>
             </Link>
             <Link
               to="/trash"
-              className="flex items-center px-3 py-2 text-sm font-bold text-gray-700 rounded-md hover:text-violet-600 hover:bg-gray-100"
+              className="flex items-center text-sm font-bold text-gray-700 hover:text-violet-600"
             >
-              <img src={TrashIcon} alt="Trash" className="w-6 h-5 mr-2" />
+              <img src={icons.TrashIcon} alt="Trash" className="w-6 h-5 mr-2" />
               <span>Trash</span>
             </Link>
           </div>
         </div>
+        {/* Menu Mobile */}
+        <DrawerNavigation isOpen={activeMenu} setIsOpen={toggleMenu} />
+
+        {/* Notification Menu */}
+        {activeMenu === "notification" && (
+          <NotificationMenu toggleMenu={toggleMenu} />
+        )}
       </div>
     </nav>
   );
