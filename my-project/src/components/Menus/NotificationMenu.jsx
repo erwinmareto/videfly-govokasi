@@ -4,9 +4,6 @@ import VideoLayer from "../../assets/icons/f7_layers-fill.svg";
 import ProfilePic2 from "../../assets/images/profile-pic-2.png";
 import ProfilePic3 from "../../assets/images/profile-pic-3.png";
 
-// TODO: make the notification menu responsive
-// TODO: tidy up the sidebar
-
 const NotificationMenu = ({ toggleMenu, isOpen }) => {
   return (
     <div

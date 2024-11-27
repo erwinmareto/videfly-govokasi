@@ -14,15 +14,10 @@ import ProfileMenu from "./Menus/ProfileMenu";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(null);
-  const [openProfile, setopenProfile] = useState(false);
 
   const toggleMenu = (menu) => {
     // If the menu clicked is already open, close it; otherwise, open the new menu
     setOpenMenu(openMenu === menu ? null : menu);
-  };
-
-  const openProfilemenu = () => {
-    setopenProfile(!openProfile);
   };
 
   return (

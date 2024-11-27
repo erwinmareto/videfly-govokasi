@@ -1,19 +1,5 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import {
-  FaLink,
-  FaFileAlt,
-  FaMicrophone,
-  FaRobot,
-  FaVideo,
-  FaProjectDiagram,
-  FaChevronLeft,
-  FaChevronRight,
-  FaEllipsisH,
-  FaClock,
-  FaRandom,
-} from "react-icons/fa";
 import HalfAdd from "../assets/icons/add-circle-half-dot.svg";
 import Video from "../assets/icons/mage_video.svg";
 import Text from "../assets/icons/fluent_textbox-16-regular.svg";
@@ -25,87 +11,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode } from "swiper/modules";
 import Header from "../components/Header";
+import { sectionList } from "../constant/datas";
 
 export default function Home() {
-  const [currentSection, setCurrentSection] = useState(0);
-
-  const sectionList = [
-    {
-      title: "Lanjutkan",
-      items: [
-        {
-          title: "Alchemist Fragrance",
-          type: "Video",
-          progress: 75,
-          icon: "cut",
-        },
-        {
-          title: "Beauty of Angel - Lip Scrub",
-          type: "Video",
-          progress: 45,
-          icon: "cut",
-        },
-      ],
-    },
-    {
-      title: "Agenda Hari Ini",
-      items: [
-        {
-          title: "Alchemist Fragrance",
-          type: "Video",
-          progress: 90,
-          icon: "add",
-        },
-        {
-          title: "Beauty of Angel - Lip Scrub",
-          type: "Design",
-          progress: 60,
-          icon: "add",
-        },
-      ],
-    },
-    {
-      title: "Agenda Besok",
-      items: [
-        {
-          title: "Beauty of Angel - Lip Scrub",
-          type: "Design",
-          progress: 30,
-          icon: "add",
-        },
-        {
-          title: "Beauty of Angel - Lip Scrub",
-          type: "Design",
-          progress: 25,
-          icon: "add",
-        },
-      ],
-    },
-    {
-      title: "Recovery Delete",
-      items: [
-        {
-          title: "Beauty of Angel - Lip Scrub",
-          type: "Design",
-          progress: 20,
-          icon: "add",
-        },
-      ],
-    },
-  ];
-
-  const nextSection = () => {
-    if (currentSection < sectionList.length - 1) {
-      setCurrentSection(currentSection + 1);
-    }
-  };
-
-  const prevSection = () => {
-    if (currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-    }
-  };
-
   const getTypeStyle = (type) => {
     return type === "Video"
       ? "bg-error-content text-error"
